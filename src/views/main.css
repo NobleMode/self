@@ -1,0 +1,96 @@
+.header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    font-family: Roboto, sans-serif;
+}
+
+
+
+.header img {
+    width: 100px;
+    height: 100px;
+}
+
+:root {
+    background-color: #fff;
+}
+
+body {
+    margin: 0;
+}
+
+.menu {
+    background-color: #ad0214;
+    text-color: white;
+}
+
+.menu-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffe6e9;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    width: 100%;
+}
+
+.tab-buttons {
+    display: grid;
+    
+    width: 100%;
+    /* justify-content: space-around; */
+}
+
+.menu-buttons {
+    padding-left: 10em;
+    border-radius: 0;
+}
+
+.menu-button{
+    color: #ad0214;
+    padding: 0.5em 0;
+    background-color: #ffe6e9;
+    text-align: center;
+    border-radius: 0;
+    border: 0;
+}
+
+.click:hover {
+    color: #fff;
+    background-color: #ad0214;
+}
+
+
+.menu-button:hover {
+    color: #fff;
+    background-color: #ad0214;
+}
+
+.mdi--filter-outline {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    color: #fff;
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ad0214' d='M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z'/%3E%3C/svg%3E");
+  }
+
+.mdi--filter-outline:hover{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z'/%3E%3C/svg%3E");
+}
+
+.ic--baseline-expand-more {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ad0214' d='M16.59 8.59L12 13.17L7.41 8.59L6 10l6 6l6-6z'/%3E%3C/svg%3E");
+  }
+
+  

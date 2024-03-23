@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/ico" href="favicon1.ico">
+    <link href="../src/output.css" rel="stylesheet">
+    <title>PROJECT TEAM 6</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- DaisyUI-->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="main.css" rel="stylesheet" type="text/css" />
+
+</head>
+    <body>
+        <div class="header">
+            <div class="ml-4">
+                <img src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png" alt="JSClub"></img>
+            </div>  
+
+            <div class="sidePart flex">
+                <label class="input border bg-white border-\[3px] border-[#ad0214]  rounded-2xl  flex items-center gap-2">
+                  <span class="material-icons" aria-hidden="true" style="color: #ad0214;"> search </span>
+                  <input type="text" class="grow" placeholder="Search" style="color: #ad0214;"/>
+                </label>
+                <button class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]" style="margin-left: 1em;">LOG OUT</button>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <div class="tab-buttons grid-cols-12">
+                <button class="btn menu-button col-span-3" aria-label="Trang chủ">TRANG CHỦ</button>
+                <button class="btn menu-button col-span-3" aria-label="Thông tin thành viên">THÔNG TIN THÀNH VIÊN</button>
+                <button class="btn menu-button col-span-3" aria-label="Đăng ký active">ĐĂNG KÍ ACTIVE</button>
+                <button class="btn menu-button col-span-3 text-white bg-[#ad0214]" aria-label="Nhiệm vụ">NHIỆM VỤ</button>
+            </div>
+            <div class="menu-buttons flex">
+                <button class="btn menu-button flex material-icons" aria-label="Menu" style="padding: 0 1em;">notifications</button>
+                <button class="btn menu-button flex material-icons" aria-label="Menu" style="padding: 0 1em;">menu</button>
+            </div>
+        </div>
+
+    <div class="flex flex-row justify-between space-x-4 mx-24 mt-12">
+      <div class="flex flex-row">
+        <label class="input border bg-white border-\[3px] border-[#ad0214] rounded-2xl flex items-center gap-2 h-12 mt-1">
+          <span class="material-icons" aria-hidden="true" style="color: #ad0214;"> search </span>
+          <input type="text" class="grow" placeholder="Search" style="color: #ad0214;"/>
+        </label>
+        <div>
+              
+        <div class="dropdown dropdown-right">
+          <div tabindex="0" role="button" class="btn m-1 rounded-lg menu-button flex material-icons" style="width:45px;height:15px;margin-left:10px;">person</div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-box w-44 font-bold text-red-800">
+                <li class="click rounded-lg"><a>Ban Chuyên môn</a></li>
+                <li class="click rounded-lg"><a>Ban Truyền thông</a></li>
+                <li class="click rounded-lg"><a>Ban Văn hóa</a></li>
+                <li class="click rounded-lg"><a>Ban Đối ngoại</a></li>
+                <li class="click rounded-lg"><a>Ban Nội dung</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+      <div class="flex flex-row mt-1">
+        <button class="btn rounded-lg menu-button flex material-icons" style="width:45px;">delete</button>
+        <button class="btn rounded-lg menu-button flex material-icons" style="width:45px; height: 20px; margin-left: 10px;">add</button>
+      </div>       
+    </div>
+
+    <div class=" bg-red-50 rounded-3xl mx-16 place-content-center h-80">
+      <div class="flex flex-row space-x-4 py-6 mt-4 flex-nowrap place-content-center font-bold text-red-800 text-center gap-px">
+        <div class="flex flex-col">
+          <div class="bg-red-200 py-2 px-4 rounded-xl">
+            <div>STT</div>
+          </div>
+          <div class="py-4">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex flex-row bg-red-200 text-red-800 py-1 px-24 rounded-xl pe-8 space-x-4 justify-between">
+            <div class="mt-1">
+              <p>Người thực hiện</p>
+            </div>
+            <div class="dropdown dropdown-bottom ps-4">
+              <div tabindex="0" class="m-1 flex material-icons">arrow_drop_down</div>
+                <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-lg w-20">
+                  <li class="click rounded-lg"><a>A - Z</a></li>
+                  <li class="click rounded-lg"><a>Z - A</a></li>
+                </ul>
+            </div>    
+          </div>
+          <div class="py-4">
+            <p>Nguyễn Phương Linh</p>
+            <p>...</p>
+            <p>...</p>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex flex-row bg-red-200 text-red-800 py-1 px-12 rounded-xl space-x-4 pe-4">
+            <div class="mt-1">
+              <p>MSSV</p>
+            </div>
+            <div class="dropdown dropdown-bottom">
+              <div tabindex="0" class="m-1 flex material-icons">arrow_drop_down</div>
+                <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-lg w-16">
+                  <li class="click rounded-lg"><a>HA</a></li>
+                  <li class="click rounded-lg"><a>HE</a></li>
+                  <li class="click rounded-lg"><a>HS</a></li>
+                </ul>
+            </div>    
+          </div>
+          <div class="py-4">
+            <p>HE190000</p>
+            <p>...</p>
+            <p>...</p>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex flex-row bg-red-200 text-red-800 py-1 px-10 rounded-xl pe-6">
+            <div class="mt-1 text-nowrap ms-6">
+              <p>Tiến trình</p>
+            </div>
+            <div class="dropdown dropdown-bottom ps-4">
+              <div tabindex="0" class="m-1 flex material-icons">arrow_drop_down</div>
+                <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-lg w-44">
+                  <li class="click rounded-lg"><a>Hoàn thành</a></li>
+                  <li class="click rounded-lg"><a>Đang tiến hành</a></li>
+                  <li class="click rounded-lg"><a>Quá hạn</a></li>
+                </ul>
+            </div>    
+          </div>
+          <div class="py-4">
+            <p>Đang tiến hành</p>
+            <p>...</p>
+            <p>...</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-col">
+            <div class="flex flex-row bg-red-200 text-red-800 py-2 px-28 rounded-xl">
+              <div class="text-nowrap text-center">
+                <p>Nhiệm vụ</p>
+              </div>   
+            </div>
+            <div class="py-4">
+              <p>Code frontend Homepage</p>
+              <p>...</p>
+              <p>...</p>
+            </div>
+          </div>
+        
+
+        <div class="flex flex-col">
+            <div class="flex flex-row bg-red-200 text-red-800 py-2 px-8 rounded-xl">
+              <div class="text-nowrap text-center">
+                <p>Deadline</p>
+              </div>   
+            </div>
+            <div class="py-4">
+              <p>18/3/2024</p>
+              <p>...</p>
+              <p>...</p>
+            </div>
+          </div>
+
+        <div class="py-14">
+          <input type="checkbox" id="delete1" class="accent-[#ad0214]"><label for="delete1"></label><br>
+          <input type="checkbox" id="delete1" class="accent-[#ad0214]"><label for="delete1"></label><br>
+          <input type="checkbox" id="delete1" class="accent-[#ad0214]"><label for="delete1"></label><br>
+        </div>
+      </div>
+    </div>
+  <div class="flex flex-row space-x-4 place-content-end mr-24 py-10">
+    <button class="bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-6 rounded-full">
+      Chỉnh sửa
+    </button>
+    <button class="bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-6 rounded-full">
+      Lưu
+    </button>
+  </div>
+</body>
+</html>

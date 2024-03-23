@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/ico" href="favicon1.ico">
+        <title>PROJECT TEAM 6</title>
+
+        <!-- Font Import -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+        <!-- DaisyUI -->
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />  
+        <script src="https://cdn.tailwindcss.com"></script>
+
+
+        <!-- Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/995d411042.js" crossorigin="anonymous"></script>
+
+        <!-- CSS -->
+        <!-- <link href="../loginPage/main.css" rel="stylesheet" type="text/css" /> -->
+    </head>
+
+    <script>
+        function viewPass() {
+            var pass = document.querySelector('.passwordInput');
+            var btn = document.querySelector('.visButton');
+
+            if (pass.type === "password") {
+                pass.type = "text";
+                btn.innerHTML = 'visibility_off';
+            } else {
+                pass.type = "password";
+                btn.innerHTML = 'visibility';
+            }
+        }
+    </script>
+
+    <style>
+        .header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px;
+            font-family: Roboto, sans-serif;
+        }
+
+        .header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        :root {
+            background-color: #fff;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .menu-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #ffe6e9;
+            font-family: Roboto, sans-serif;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .tab-buttons {
+            display: grid;
+            
+            width: 100%;
+            /* justify-content: space-around; */
+        }
+
+        .menu-buttons {
+            padding-left: 10em;
+            border-radius: 0;
+        }
+
+        .menu-button{
+            color: #ad0214;
+            padding: 0.5em 0;
+            background-color: #fdced4;
+            text-align: center;
+            border-radius: 0;
+            border: 0;
+        }
+
+
+
+        .menu-button:hover {
+            color: #fff;
+            background-color: #ad0214;
+        }
+
+
+        .isActive {
+            color: green;
+            -webkit-text-stroke: 1px black;
+        }
+
+        .notActive {
+            color: red;
+            -webkit-text-stroke: 1px black;
+        }
+    </style>
+
+    <body>
+
+        <!-- Header Display-->
+        <div class="p-[8em] h-dvh flex justify-evenly items-center">
+            <a href="https://www.facebook.com/fu.jsclub" alt="JS Club">
+                <img class="w-72 h-72" src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png" alt="JSClub"></img>
+            </a>
+
+            <div class="w-[60%] h-[100%] py-[6%] px-14 flex justify-evenly items-center">
+                <div class="bg-[#ffe6e9] h-80 w-full rounded-[3rem] shadow-[15px_15px_0_#ad0214] flex justify-evenly items-center">
+                    <div class="flex flex-col h-[75%] justify-between">
+                        <div>
+                            <label class="input border bg-white border-\[3px\] border-[#ad0214]  rounded-2xl  flex items-center gap-2 mb-2">
+                                <span class="material-icons" aria-hidden="true" style="color: #ad0214;"> account_circle </span>
+                                <input type="text" class="grow" name="username" placeholder="Tên Tài khoản" style="color: #ad0214;"/>
+                            </label>
+                            <label class="input border bg-white border-\[3px\] border-[#ad0214]  rounded-2xl  flex items-center gap-2 mb-2">
+                                <span class="material-icons" aria-hidden="true" style="color: #ad0214;"> lock </span>
+                                <input type="password" name="password" class="grow passwordInput" placeholder="Mật khẩu" style="color: #ad0214;"/>
+                                <button class="material-icons visButton" onclick="viewPass()" aria-hidden="true" style="color: #ad0214;"> visibility </button>
+                            </label>
+
+                            <a href="/home"><button class="btn mb-2 w-full text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]">Submit</button></a>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <span class="font-semibold pb-2" style="color: #ad0214">Bạn quên mật khẩu ?</span>
+                            <div class="tab-buttons grid-cols-2">
+                                <button class="btn rounded-l-full menu-button col-span-1" aria-label="admin support">Admin Support</button>
+                                <button class="btn rounded-r-full menu-button col-span-1" aria-label="tự thay">Self Verify</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex self-center border-2 border-dashed h-[75%] border-[#ad0214] my-5"></div>
+
+                    <div class="flex flex-col h-[75%] justify-evenly">
+                        <button class="btn rounded-lg menu-button flex material-icons" aria-label="Menu" style="padding: 0 0.5em;"><i class="fa-brands fa-facebook-f"></i></button>
+                        <button class="btn rounded-lg menu-button flex material-icons" aria-label="Menu" style="padding: 0 0.5em;"><i class="fa-brands fa-google"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
