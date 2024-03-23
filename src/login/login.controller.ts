@@ -14,12 +14,14 @@ export class LoginController {
   async login(@Request() req, @Body() body, @Res() res: Response) {
     const { username, password } = body;
 
-    const isLoggedIn = await this.loginService.login(username, password);
+    const isLoggedIn = await this.loginService.login(username, password) ? true : false;
     if (isLoggedIn) {
       // Redirect to the home page or perform any other action
+      console.log("real");
       res.redirect('/home');
     } else {
       // Redirect to the login page or perform any other action
+      console.log("fake");
       res.redirect('/login');
     }
   }

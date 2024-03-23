@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { Pool } from "pg";
-export const PG_CONNECTION = 'PG_CONNECTION';
+import { PG_CONNECTION } from "./constants";
 
 const dbProvider = {
     provide: PG_CONNECTION,
