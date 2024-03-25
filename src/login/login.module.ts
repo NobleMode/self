@@ -6,7 +6,6 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategies/local.stategies';
 import { JwtStrategy } from './strategies/jwt.strategies';
-import { CryptoService } from 'src/db-connect/crypto.service';
 import { config } from 'dotenv';
 config();
 
@@ -17,6 +16,6 @@ config();
     JwtModule.register({ secret: process.env.KEY, signOptions: { expiresIn: '10m' } })
   ],
   controllers: [LoginController],
-  providers: [LoginService, LocalStrategy, JwtStrategy, CryptoService]
+  providers: [LoginService, LocalStrategy, JwtStrategy]
 })
 export class LoginModule {}

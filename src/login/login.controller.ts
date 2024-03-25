@@ -4,11 +4,10 @@ import { Response } from 'express';
 import { authDTO } from 'src/login/dto/auth.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { JwtGuard } from './guard/jwt.guard';
-import { CryptoService } from 'src/db-connect/crypto.service';
 
 @Controller('login')
 export class LoginController {
-  constructor(private readonly loginService: LoginService, private readonly ed: CryptoService) {}
+  constructor(private readonly loginService: LoginService) {}
 
   @Get()
   @Render('login.hbs')
@@ -23,10 +22,7 @@ export class LoginController {
     console.log(isLoggedIn);
     // Redirect to the home page or perform any other action
 
-    const userEncrypted = await this.ed.encrypt(isLoggedIn);
-
-    console.log(userEncrypted);
-    res.cookie('jwt', userEncrypted, { httpOnly: true });
+    res.cookie('jwt', isLoggedIn, { httpOnly: true });
 
     console.log("real");
     res.redirect('/home');
