@@ -23,21 +23,6 @@
         <!-- <link href="../loginPage/main.css" rel="stylesheet" type="text/css" /> -->
     </head>
 
-    <script>
-        function viewPass() {
-            var pass = document.querySelector('.passwordInput');
-            var btn = document.querySelector('.visButton');
-
-            if (pass.type === "password") {
-                pass.type = "text";
-                btn.innerHTML = 'visibility_off';
-            } else {
-                pass.type = "password";
-                btn.innerHTML = 'visibility';
-            }
-        }
-    </script>
-
     <style>
         .header {
             display: flex;
@@ -92,13 +77,10 @@
             border: 0;
         }
 
-
-
         .menu-button:hover {
             color: #fff;
             background-color: #ad0214;
         }
-
 
         .isActive {
             color: green;
@@ -111,10 +93,31 @@
         }
     </style>
 
+        <script>
+        function viewPass() {
+            var pass = document.querySelector('.passwordInput');
+            var btn = document.querySelector('.visButton');
+
+            if (pass.type === "password") {
+                pass.type = "text";
+                btn.innerHTML = 'visibility_off';
+            } else {
+                pass.type = "password";
+                btn.innerHTML = 'visibility';
+            }
+        }
+
+    </script>
+
     <body>
 
         <!-- Header Display-->
         <div class="p-[8em] h-dvh flex justify-evenly items-center">
+
+            <div id="notification" style="display: none; position: fixed; top: 20px; right: 20px; padding: 10px; background-color: #ad0214; color: white; border-radius: 5px;">
+                User not found or You might have forgot the password
+            </div>
+
             <a href="https://www.facebook.com/fu.jsclub" alt="JS Club">
                 <img class="w-72 h-72" src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png" alt="JSClub"></img>
             </a>
@@ -122,17 +125,17 @@
             <div class="w-[60%] h-[100%] py-[6%] px-14 flex justify-evenly items-center">
                 <div class="bg-[#ffe6e9] h-80 w-full rounded-[3rem] shadow-[15px_15px_0_#ad0214] flex justify-evenly items-center">
                     <div class="flex flex-col h-[75%] justify-between">
-                        <form action="/login" method="post">
+                        <form id="login-form">
                             <label class="input border bg-white border-\[3px\] border-[#ad0214]  rounded-2xl  flex items-center gap-2 mb-2">
                                 <span class="material-icons" aria-hidden="true" style="color: #ad0214;"> account_circle </span>
-                                <input type="text" class="grow" name="username" placeholder="Tên Tài khoản" style="color: #ad0214;"/>
+                                <input type="text" class="grow" id="username" placeholder="Tên Tài khoản" style="color: #ad0214;"/>
                             </label>
                             <label class="input border bg-white border-\[3px\] border-[#ad0214]  rounded-2xl  flex items-center gap-2 mb-2">
                                 <span class="material-icons" aria-hidden="true" style="color: #ad0214;"> lock </span>
-                                <input type="password" name="password" class="grow passwordInput" placeholder="Mật khẩu" style="color: #ad0214;"/>
+                                <input type="password" id="password" class="grow passwordInput" placeholder="Mật khẩu" style="color: #ad0214;"/>
                                 <button class="material-icons visButton" onclick="viewPass()" aria-hidden="true" style="color: #ad0214;"> visibility </button>
                             </label>
-
+                            <p id="error-message" style="color: #ad0214;"></p>
                             <button class="btn mb-2 w-full text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]">Submit</button>
                         </form>
 
@@ -155,4 +158,34 @@
             </div>
         </div>
     </body>
+
+    <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username, password: password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.redirectUrl) {
+                window.location.href = data.redirectUrl;
+            } else {
+                var notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(function() {
+                    notification.style.display = 'none';
+                }, 10000); // Hide the notification after 20 seconds
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    </script>
+
+
 </html>

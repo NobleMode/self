@@ -2,8 +2,9 @@ import { Controller, Get, Post, Render, Request, Body, Res, Session, HttpExcepti
 import { LoginService } from './login.service';
 import { Response } from 'express';
 import { authDTO } from 'src/login/dto/auth.dto';
-import { AuthGuard } from '@nestjs/passport';
 import { JwtGuard } from './guard/jwt.guard';
+import { config } from 'dotenv';
+config();
 
 @Controller('login')
 export class LoginController {
@@ -14,20 +15,16 @@ export class LoginController {
   root() {}
 
   @Post()
-  @UseGuards(AuthGuard('local'))
   async login(@Body() body : authDTO, @Res() res: Response) {
-
     const isLoggedIn = await this.loginService.login(body);
 
-    console.log(isLoggedIn);
-    // Redirect to the home page or perform any other action
-
-    res.cookie('jwt', isLoggedIn, { httpOnly: true });
-
-    console.log("real");
-    res.redirect('/home');
-      
-  }
+    if (isLoggedIn == null) {
+        res.status(401).json({ message: "Login failed. You forgot password or something?" });
+    } else {
+        res.cookie('jwt', isLoggedIn, { httpOnly: true });
+        res.status(200).json({ message: "Login successful", redirectUrl: "/home" });
+    }
+}
 
   @Get('status')
   @UseGuards(JwtGuard)
@@ -35,5 +32,4 @@ export class LoginController {
     console.log(req.user);
     return req.user;
   }
-
 }
