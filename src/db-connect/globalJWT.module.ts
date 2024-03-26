@@ -8,7 +8,6 @@ config();
   imports: [
     JwtModule.register({ secret: process.env.KEY, signOptions: { expiresIn: '10m' } }),
   ],
-  providers: [JwtService],
-  exports: [JwtService],
+  exports: [JwtModule],
 })
 export class GlobalJwtModule {}

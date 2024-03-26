@@ -225,7 +225,7 @@
       </div>
 
       <div class="sidePart flex">
-        <p class="text-[#ad0214]">Welcome, {{user}}!</p>
+        <p class="text-[#ad0214] flex items-center">Welcome, {{user}}!</p>
         <button
           class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]"
           style="margin-left: 1em"
@@ -306,7 +306,7 @@
           class="pt-4"
           style="font-size: larger; color: #ad0214; font-weight: bolder"
         >
-          JS Club
+          {{ user }}
         </span>
       </div>
 
@@ -316,15 +316,15 @@
           <h2>MSSV:</h2>
           <h3>Ngày sinh:</h3>
           <h4>Ban:</h4>
-          <h5>Role:</h5>
+          <h5>Vai trò:</h5>
         </div>
 
         <div class="text-end mr-8" style="color: #ad0214">
-          <h1>...</h1>
-          <h2>...</h2>
-          <h3>...</h3>
-          <h4>...</h4>
-          <h5>...</h5>
+          <h1>{{ name }}</h1>
+          <h2>{{ rollno }}</h2>
+          <h3>{{ dob }}</h3>
+          <h4>{{ dept }}</h4>
+          <h5>{{ role }}</h5>
         </div>
       </div>
 
@@ -332,7 +332,7 @@
         <div class="flex w-[80%] justify-between items-center">
           <a
             href="/profile"
-            class="underline font-semibold ms-32"
+            class="underline font-semibold "
             style="color: #ad0214"
             >Xem chi tiết</a
           >
@@ -395,8 +395,8 @@
     </div>
 
     <!-- Main Here -->
-    <div class="container w-[100vw]">
-      <div class="flex flex-row mt-1">
+    <div class="p-8 w-[100vw]">
+      <div class="flex flex-row justify-evenly mt-1">
       <!--Slide menu-->
       <div class="slideshow-container">
           <div class="mySlides fade">
