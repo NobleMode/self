@@ -198,23 +198,7 @@ body {
 
       <div class="flex flex-col">
         <div class="sidePart flex">
-          <label
-            class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2"
-          >
-            <span
-              class="material-icons"
-              aria-hidden="true"
-              style="color: #ad0214"
-            >
-              search
-            </span>
-            <input
-              type="text"
-              class="grow"
-              placeholder="Search"
-              style="color: #ad0214"
-            />
-          </label>
+          <p class="text-[#ad0214] flex items-center">Welcome, {{user}}!</p>
           <button
             class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]"
             style="margin-left: 1em"
@@ -295,7 +279,7 @@ body {
           class="pt-4"
           style="font-size: larger; color: #ad0214; font-weight: bolder"
         >
-          JS Club
+          {{ user }}
         </span>
       </div>
 
@@ -309,11 +293,11 @@ body {
         </div>
 
         <div class="text-end mr-8" style="color: #ad0214">
-          <h1>...</h1>
-          <h2>...</h2>
-          <h3>...</h3>
-          <h4>...</h4>
-          <h5>...</h5>
+          <h1>{{ name }}</h1>
+          <h2>{{ rollno }}</h2>
+          <h3>{{ dob }}</h3>
+          <h4>{{ dept }}</h4>
+          <h5>{{ role }}</h5>
         </div>
       </div>
 
@@ -414,25 +398,11 @@ body {
               <li class="click rounded-lg"><a>Chọn ảnh</a></li>
             </ul>
           </div>
-          <button
-            class="btn rounded-lg menu-button flex material-icons mt-7"
-            aria-label="Menu"
-            style="padding: 0 0.5em"
-          >
-            edit
-          </button>
-          <button
-            class="btn rounded-lg menu-button flex material-icons mt-7"
-            aria-label="Menu"
-            style="padding: 0 0.5em"
-          >
-            save
-          </button>
         </div>
       </div>
       <div class="flex flex-col w-full">
         <span class="text-3xl text-red-800 font-bold mt-16 ms-56">
-          Japanese Software Engineering's Profile</span
+          {{ name }}'s Profile</span
         >
 
         <!--Information-->
@@ -453,13 +423,13 @@ body {
           </div>
 
           <div class="flex flex-col justify-start ms-12 mt-12 text-red-800">
-            <div class="flex items-center font-semibold">Chuyên môn</div>
-            <div class="flex items-center font-semibold mt-8">Thành viên</div>
+            <div class="flex items-center font-semibold">{{ dept }}</div>
+            <div class="flex items-center font-semibold mt-8">{{ role }}</div>
             <div class="flex items-center font-semibold mt-8">
-              jsclub.fpt@gmail.com
+              {{ mail }}
             </div>
             <div class="flex items-center font-semibold mt-8">
-              Đại học FPT Hà Nội
+              {{ loc }}
             </div>
           </div>
 
@@ -476,31 +446,31 @@ body {
               Liên hệ
             </div>
             <div class="font-bold bg-[#ad0214] py-2 px-5 rounded-xl ms-16 mt-4">
-              Chuyên ngành
+              Gen
             </div>
           </div>
 
           <div class="flex flex-col justify-start ms-12 mt-12">
             <div class="flex items-center font-semibold" style="color: #ad0214">
-              HE190000
+              {{ rollno }}
             </div>
             <div
               class="flex items-center font-semibold mt-8"
               style="color: #ad0214"
             >
-              00/00/0000
+              {{ dob }}
             </div>
             <div
               class="flex items-center font-semibold mt-8"
               style="color: #ad0214"
             >
-              0900 000 000
+              {{ phone }}
             </div>
             <div
               class="flex items-center font-semibold mt-8"
               style="color: #ad0214"
             >
-              Kỹ thuật phần mềm
+              {{ gen }}
             </div>
           </div>
         </div>
