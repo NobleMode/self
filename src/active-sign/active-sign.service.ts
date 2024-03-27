@@ -1,8 +1,9 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { PG_CONNECTION } from 'src/db-connect/constants';
 
 @Injectable()
-export class ProfileService {
+export class ActiveSignService {
+    
     constructor(@Inject(PG_CONNECTION) private conn: any) {}
 
     async getInfo(input: string, item: string): Promise<string> {

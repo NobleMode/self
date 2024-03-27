@@ -29,7 +29,6 @@ export class LoginController {
   @Get('status')
   @UseGuards(JwtGuard)
   status(@Req() req: Request & { user: any }){
-    console.log(req.user);
     return req.user;
   }
 }

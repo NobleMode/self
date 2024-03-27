@@ -23,7 +23,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
             console.log(req.cookies['jwt']);
             return req.cookies['jwt'];
         }
-        console.log("null");
         return null;
     }
 

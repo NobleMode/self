@@ -8,13 +8,11 @@ export class HomeService {
 
     async getInfo(input: string, item: string): Promise<string> {
         const result = await this.conn.query(`SELECT * FROM public.member WHERE username = $1`, [input]);
-        console.log(result.rows[0][item])
         return result.rows[0][item];
     }
 
     async getRef(input: string, refItem: string): Promise<any> {
         const result = await this.conn.query(`SELECT o.name FROM public.member m JOIN public.${refItem} o ON m.${refItem}_id = o.${refItem}_id WHERE m.username = '${input}'`);
-        console.log(result.rows[0]['name']);
         return result.rows[0]['name'];
     }
 }

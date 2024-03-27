@@ -6,6 +6,7 @@ import { HomeModule } from './home/home.module';
 import { LogoutModule } from './logout/logout.module';
 import { GlobalJwtModule } from './db-connect/globalJWT.module';
 import { ProfileModule } from './profile/profile.module';
+import { ActiveSignModule } from './active-sign/active-sign.module';
 
 
 @Module({
@@ -13,7 +14,7 @@ import { ProfileModule } from './profile/profile.module';
     LoginModule,
     HomeModule,
     LogoutModule,     
-    GlobalJwtModule, ProfileModule
+    GlobalJwtModule, ProfileModule, ActiveSignModule
   ],
   controllers: [AppController],
   providers: [AppService],

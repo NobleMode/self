@@ -12,8 +12,6 @@ export class HomeController {
     async root(@Req() request: Request) {
         const username = jwt.decode(request.cookies.jwt)['username'];
 
-        console.log(username);
-
         return { 
             user: await this.hS.getInfo(username, "username"),
             name: await this.hS.getInfo(username, "name"),

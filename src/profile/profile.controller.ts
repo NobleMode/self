@@ -12,8 +12,6 @@ export class ProfileController {
     async root(@Req() request: Request) {
         const username = jwt.decode(request.cookies.jwt)['username'];
 
-        console.log(username);
-
         return { 
             user: await this.pS.getInfo(username, "username"),
             name: await this.pS.getInfo(username, "name"),

@@ -1,162 +1,118 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/ico" href="favicon1.ico" />
-    <title>PROJECT TEAM 6</title>
 
-    <!-- Font Import -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/ico" href="favicon1.ico" />
+  <title>PROJECT TEAM 6</title>
 
-    <!-- DaisyUI -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet" />
 
-    <!-- Icons -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- CSS -->
-    {{!-- <link href="src/views/main.css" rel="stylesheet" type="text/css" /> --}}
-  </head>
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-  <script>
-    function showProfile() {
-      var profile = document.querySelector(".profile");
+  <!-- CSS -->
+  {{!--
+  <link href="src/views/main.css" rel="stylesheet" type="text/css" /> --}}
+</head>
 
-      if (profile.style.display != "block") {
-        profile.style.display = "block";
-        profile.classList.add("slide-left");
-      } else {
-        profile.style.display = "none";
-      }
+<script>
+  function showProfile() {
+    var profile = document.querySelector(".profile");
+
+    if (profile.style.display != "block") {
+      profile.style.display = "block";
+      profile.classList.add("slide-left");
+    } else {
+      profile.style.display = "none";
     }
-  </script>
+  }
+</script>
 
-  <script>
-    function showNotification() {
-      var profile = document.querySelector(".notification");
+<script>
+  function showNotification() {
+    var profile = document.querySelector(".notification");
 
-      if (profile.style.display != "block") {
-        profile.style.display = "block";
-        profile.classList.add("slide-left");
-      } else {
-        profile.style.display = "none";
-      }
+    if (profile.style.display != "block") {
+      profile.style.display = "block";
+      profile.classList.add("slide-left");
+    } else {
+      profile.style.display = "none";
     }
+  }
+</script>
 
-    window.onload = function() {
-      document.querySelectorAll('.dropdown-item-1').forEach(item => {
-        item.addEventListener('click', event => {
-          event.preventDefault();
-          const dropdownButton = document.getElementById('dropdownButton-1');
-          dropdownButton.innerHTML = event.target.innerHTML;
+<style>
+  .slide-left {
+    -webkit-animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 200ms both;
+    animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 200ms both;
+  }
 
-          const fake1Elements = document.getElementsByClassName('fake-1');
-          const fake2Elements = document.getElementsByClassName('fake-2');
-
-          if (dropdownButton.innerHTML == "Kì") {
-            for (let i = 0; i < fake1Elements.length; i++) {
-              fake1Elements[i].style.display = "none";
-            }
-            for (let i = 0; i < fake2Elements.length; i++) {
-              fake2Elements[i].style.display = "block";
-            }
-          } else {
-            for (let i = 0; i < fake1Elements.length; i++) {
-              fake1Elements[i].style.display = "block";
-            }
-            for (let i = 0; i < fake2Elements.length; i++) {
-              fake2Elements[i].style.display = "none";
-            }
-          }
-        });
-      });
-
-
-      document.querySelectorAll('.dropdown-item-2').forEach(item => {
-        item.addEventListener('click', event => {
-          event.preventDefault();
-          const dropdownButton = document.getElementById('dropdownButton-2');
-          dropdownButton.innerHTML = event.target.innerHTML;
-        });
-      });
-
-
-    };
-  </script>
-
-  <style>
-    .slide-left {
-      -webkit-animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
-        200ms both;
-      animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 200ms both;
+  @-webkit-keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
     }
 
-    @-webkit-keyframes slide-left {
-      0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-      }
-      100% {
-        -webkit-transform: translateX(-350px);
-        transform: translateX(-350px);
-      }
+    100% {
+      -webkit-transform: translateX(-350px);
+      transform: translateX(-350px);
     }
-    @keyframes slide-left {
-      0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-      }
-      100% {
-        -webkit-transform: translateX(-350px);
-        transform: translateX(-350px);
-      }
+  }
+
+  @keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
     }
 
+    100% {
+      -webkit-transform: translateX(-350px);
+      transform: translateX(-350px);
+    }
+  }
 
-    .header {
+
+  .header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     background-color: #fff;
     padding: 10px;
     font-family: Roboto, sans-serif;
-}
+  }
 
 
 
-.header img {
+  .header img {
     width: 100px;
     height: 100px;
-}
+  }
 
-:root {
+  :root {
     background-color: #fff;
-}
+  }
 
-body {
+  body {
     margin: 0;
-}
+  }
 
-.menu {
+  .menu {
     background-color: #ad0214;
     text-color: white;
-}
+  }
 
-.menu-bar {
+  .menu-bar {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -164,41 +120,41 @@ body {
     font-family: Roboto, sans-serif;
     font-weight: bold;
     width: 100%;
-}
+  }
 
-.tab-buttons {
+  .tab-buttons {
     display: grid;
-    
+
     width: 100%;
     /* justify-content: space-around; */
-}
+  }
 
-.menu-buttons {
+  .menu-buttons {
     padding-left: 10em;
     border-radius: 0;
-}
+  }
 
-.menu-button{
+  .menu-button {
     color: #ad0214;
     padding: 0.5em 0;
     background-color: #ffe6e9;
     text-align: center;
     border-radius: 0;
     border: 0;
-}
+  }
 
-.click:hover {
+  .click:hover {
     color: #fff;
     background-color: #ad0214;
-}
+  }
 
 
-.menu-button:hover {
+  .menu-button:hover {
     color: #fff;
     background-color: #ad0214;
-}
+  }
 
-.mdi--filter-outline {
+  .mdi--filter-outline {
     display: inline-block;
     width: 2em;
     height: 2em;
@@ -209,11 +165,11 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ad0214' d='M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z'/%3E%3C/svg%3E");
   }
 
-.mdi--filter-outline:hover{
+  .mdi--filter-outline:hover {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z'/%3E%3C/svg%3E");
-}
+  }
 
-.ic--baseline-expand-more {
+  .ic--baseline-expand-more {
     display: inline-block;
     width: 1em;
     height: 1em;
@@ -221,311 +177,217 @@ body {
     background-size: 100% 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ad0214' d='M16.59 8.59L12 13.17L7.41 8.59L6 10l6 6l6-6z'/%3E%3C/svg%3E");
   }
+</style>
 
-  
-  </style>
-
-  <body>
-    <!-- Header Display-->
-    <div class="header">
-      <div class="ml-4">
-        <a href="https://www.facebook.com/fu.jsclub" alt="JS Club">
-          <img
-            src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
-            alt="JSClub"
-          />
-        </a>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="sidePart flex">
-          <label
-            class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2"
-          >
-            <span
-              class="material-icons"
-              aria-hidden="true"
-              style="color: #ad0214"
-            >
-              search
-            </span>
-            <input
-              type="text"
-              class="grow"
-              placeholder="Search"
-              style="color: #ad0214"
-            />
-          </label>
-          <button
-            class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]"
-            style="margin-left: 1em"
-          >
-            LOG OUT
-          </button>
-        </div>
-      </div>
+<body>
+  <!-- Header Display-->
+  <div class="header">
+    <div class="ml-4">
+      <a href="https://www.facebook.com/fu.jsclub" alt="JS Club">
+        <img
+          src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
+          alt="JSClub" />
+      </a>
     </div>
-    <!-- Header Display-->
 
-    <!-- Menu Display-->
-    <div class="menu-bar">
-      <div class="tab-buttons grid-cols-12">
-        <a
-          href="/home"
-          class="btn menu-button col-span-3">
-          <button aria-label="Trang chủ">
-            TRANG CHỦ
-          </button>
-        </a>
-        <a href="/infor" class="btn menu-button col-span-3">
-          <button aria-label="Thông tin thành viên">
-            THÔNG TIN THÀNH VIÊN
-          </button>
-        </a>
-        <a
-          href="/active"
-          class="btn menu-button col-span-3 text-white bg-[#ad0214]"
-        >
-          <button aria-label="Đăng ký active">ĐĂNG KÍ HOẠT ĐỘNG</button>
-        </a>
-        <a href="/task" class="btn menu-button col-span-3">
-          <button aria-label="nhiệm vụ">NHIỆM VỤ</button>
-        </a>
-      </div>
-      <div class="menu-buttons flex">
+    <div class="flex flex-col">
+      <div class="sidePart flex">
+        <p class="text-[#ad0214] flex items-center">Welcome, {{user}}!</p>
         <button
-          class="btn menu-button flex material-icons"
-          onclick="showNotification()"
-          aria-label="Menu"
-          style="padding: 0 1em"
-        >
-          notifications
-        </button>
-        <button
-          class="btn menu-button flex material-icons"
-          onclick="showProfile()"
-          aria-label="Menu"
-          style="padding: 0 1em"
-        >
-          menu
+          class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]"
+          style="margin-left: 1em">
+          LOG OUT
         </button>
       </div>
     </div>
+  </div>
+  <!-- Header Display-->
 
-    <!-- Profile Stuff-->
-    <div
-      class="profile rounded-bl-[48px] w-72 border-[#ddc8ca] border-l border-b bg-red-50"
-      style="
+  <!-- Menu Display-->
+  <div class="menu-bar">
+    <div class="tab-buttons grid-cols-12">
+      <a href="/home" class="btn menu-button col-span-3">
+        <button aria-label="Trang chủ">
+          TRANG CHỦ
+        </button>
+      </a>
+      <a href="/infor" class="btn menu-button col-span-3">
+        <button aria-label="Thông tin thành viên">
+          THÔNG TIN THÀNH VIÊN
+        </button>
+      </a>
+      <a href="/active" class="btn menu-button col-span-3 text-white bg-[#ad0214]">
+        <button aria-label="Đăng ký active">ĐĂNG KÍ HOẠT ĐỘNG</button>
+      </a>
+      <a href="/task" class="btn menu-button col-span-3">
+        <button aria-label="nhiệm vụ">NHIỆM VỤ</button>
+      </a>
+    </div>
+    <div class="menu-buttons flex">
+      <button class="btn menu-button flex material-icons" onclick="showNotification()" aria-label="Menu"
+        style="padding: 0 1em">
+        notifications
+      </button>
+      <button class="btn menu-button flex material-icons" onclick="showProfile()" aria-label="Menu"
+        style="padding: 0 1em">
+        menu
+      </button>
+    </div>
+  </div>
+
+  <!-- Profile Stuff-->
+  <div class="profile rounded-bl-[48px] w-72 border-[#ddc8ca] border-l border-b bg-red-50" style="
         display: none;
         position: absolute;
         right: -350px;
         top: 10.5em;
         z-index: 10;
-      "
-    >
-      <div
-        class="h-24 w-full py-2"
-        style="position: absolute; background: #ad0214"
-      ></div>
+      ">
+    <div class="h-24 w-full py-2" style="position: absolute; background: #ad0214"></div>
 
-      <div class="avatar flex flex-col items-center py-8">
-        <div class="w-24 rounded-full shadow-lg mt-4">
-          <img
-            src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
-            alt="JS Club"
-          />
-        </div>
-
-        <span
-          class="pt-4"
-          style="font-size: larger; color: #ad0214; font-weight: bolder"
-        >
-          JS Club
-        </span>
+    <div class="avatar flex flex-col items-center py-8">
+      <div class="w-24 rounded-full shadow-lg mt-4">
+        <img
+          src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
+          alt="JS Club" />
       </div>
 
-      <div class="flex justify-between">
-        <div class="ml-8 mb-4 font-medium" style="color: #ad0214">
-          <h1>Họ tên:</h1>
-          <h2>MSSV:</h2>
-          <h3>Ngày sinh:</h3>
-          <h4>Ban:</h4>
-          <h5>Role:</h5>
-        </div>
+      <span class="pt-4" style="font-size: larger; color: #ad0214; font-weight: bolder">
+        {{ user }}
+      </span>
+    </div>
 
-        <div class="text-end mr-8" style="color: #ad0214">
-          <h1>...</h1>
-          <h2>...</h2>
-          <h3>...</h3>
-          <h4>...</h4>
-          <h5>...</h5>
-        </div>
+    <div class="flex justify-between">
+      <div class="ml-8 mb-4 font-medium" style="color: #ad0214">
+        <h1>Họ tên:</h1>
+        <h2>MSSV:</h2>
+        <h3>Ngày sinh:</h3>
+        <h4>Ban:</h4>
+        <h5>Role:</h5>
       </div>
 
-      <div class="mb-10 flex justify-center">
-        <div class="flex w-[80%] justify-between items-center">
-          <a
-            href="/profile"
-            class="underline font-semibold ms-32"
-            style="color: #ad0214"
-            >Xem chi tiết</a
-          >
-        </div>
+      <div class="text-end mr-8" style="color: #ad0214">
+        <h1>{{ name }}</h1>
+        <h2>{{ rollno }}</h2>
+        <h3>{{ dob }}</h3>
+        <h4>{{ dept }}</h4>
+        <h5>{{ role }}</h5>
       </div>
     </div>
 
-    <!--Noti-->
-    <div
-      class="notification rounded-bl-[48px] w-80 border-[#ddc8ca] border-l border-b bg-red-50"
-      style="
+    <div class="mb-10 flex justify-center">
+      <div class="flex w-[80%] justify-between items-center">
+        <a href="/profile" class="underline font-semibold" style="color: #ad0214">Xem chi tiết</a>
+      </div>
+    </div>
+  </div>
+
+  <!--Noti-->
+  <div class="notification rounded-bl-[48px] w-80 border-[#ddc8ca] border-l border-b bg-red-50" style="
         display: none;
         position: absolute;
         right: -350px;
         top: 10.5em;
         z-index: 10;
-      "
-    >
-      <div class="text-center text-red-800 font-bold py-6">
-        Bạn có thông báo mới!
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Có 1 cuộc họp lúc 18/3/2024</p>
-        </a>
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Có 1 deadline đến sắp đến hạn</p>
-        </a>
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Bảo vệ thử dự án Chuyên môn</p>
-        </a>
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Cập nhật deadline mới</p>
-        </a>
-      </div>
-      <div class="mb-10 flex justify-center mt-10">
-        <div class="flex w-[80%] justify-between items-center">
-          <a
-            href=""
-            class="underline font-semibold ms-40"
-            style="color: #ad0214"
-            >Xem tất cả</a
-          >
-        </div>
+      ">
+    <div class="text-center text-red-800 font-bold py-6">
+      Bạn có thông báo mới!
+    </div>
+    <div class="rounded-lg p-2 ms-6 me-6 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+      <a href="">
+        <p class="text-center">Có 1 cuộc họp lúc 18/3/2024</p>
+      </a>
+    </div>
+    <div class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+      <a href="">
+        <p class="text-center">Có 1 deadline đến sắp đến hạn</p>
+      </a>
+    </div>
+    <div class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+      <a href="">
+        <p class="text-center">Bảo vệ thử dự án Chuyên môn</p>
+      </a>
+    </div>
+    <div class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+      <a href="">
+        <p class="text-center">Cập nhật deadline mới</p>
+      </a>
+    </div>
+    <div class="mb-10 flex justify-center mt-10">
+      <div class="flex w-[80%] justify-between items-center">
+        <a href="" class="underline font-semibold ms-40" style="color: #ad0214">Xem tất cả</a>
       </div>
     </div>
+  </div>
 
-    <!-- Main Display-->
-    <div class="main-display py-[3em]">
-      <div class="grid grid-cols-12 gap-4 h-[600px]">
-        <div class="col-start-2 col-span-3 flex flex-col">
-          <div class="avatar flex flex-col items-center pb-8 ms-2">
-            <div class="border w-36 rounded-full shadow-md p-4">
-              <img
-                src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
-                alt="JS Club"
-              />
-            </div>
-
-            <span
-              class="pt-4"
-              style="font-size: 24px; color: #ad0214; font-weight: bolder"
-            >
-              JS Club
-            </span>
+  <!-- Main Display-->
+  <div class="main-display py-[3em]">
+    <div class="grid grid-cols-12 gap-4 h-[600px]">
+      <div class="col-start-2 col-span-3 flex flex-col">
+        <div class="avatar flex flex-col items-center pb-8 ms-2">
+          <div class="border w-36 rounded-full shadow-md p-4">
+            <img
+              src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
+              alt="JS Club" />
           </div>
 
-          <div class="pb-[1.5rem] flex justify-center">
-            <span
-              class="font-bold bg-[#ffe6e9] py-1 px-4 mr-14 rounded-full"
-              style="color: #ad0214"
-            >
-              Ban
-            </span>
+          <span class="pt-4" style="font-size: 24px; color: #ad0214; font-weight: bolder">
+            {{ name }}
+          </span>
+        </div>
+
+        <div class="pb-[1.5rem] flex justify-center">
+          <span class="font-bold bg-[#ffe6e9] py-1 px-4 mr-14 rounded-full" style="color: #ad0214">
+            Ban
+          </span>
+
+          <h1 class="flex items-center font-semibold" style="color: #ad0214">
+            {{ dept }}
+          </h1>
+        </div>
+
+        <div class="pb-[1.5rem] flex justify-center me-4">
+          <span class="font-bold bg-[#ffe6e9] py-1 px-4 mr-8 rounded-full" style="color: #ad0214">
+            Vai trò
+          </span>
+
+          <h1 class="flex items-center font-semibold ms-1" style="color: #ad0214">
+            {{ role }}
+          </h1>
+        </div>
+
+        <div class="flex justify-center ms-8">
+          <span class="font-bold bg-[#ffe6e9] py-1 px-4 mr-8 rounded-full" style="color: #ad0214">
+            Trạng Thái
+          </span>
+
+          <div class="flex">
+            <span class="isActive text-xl pr-4 text-green-700">●</span>
 
             <h1 class="flex items-center font-semibold" style="color: #ad0214">
-              Chuyên Môn
+              Hoạt động
             </h1>
-          </div>
-
-          <div class="pb-[1.5rem] flex justify-center me-4">
-            <span
-              class="font-bold bg-[#ffe6e9] py-1 px-4 mr-8 rounded-full"
-              style="color: #ad0214"
-            >
-              Vai trò
-            </span>
-
-            <h1
-              class="flex items-center font-semibold ms-1"
-              style="color: #ad0214"
-            >
-              Thành Viên
-            </h1>
-          </div>
-
-          <div class="flex justify-center ms-8">
-            <span
-              class="font-bold bg-[#ffe6e9] py-1 px-4 mr-8 rounded-full"
-              style="color: #ad0214"
-            >
-              Trạng Thái
-            </span>
-
-            <div class="flex">
-              <span class="isActive text-xl pr-4 text-green-700">●</span>
-
-              <h1
-                class="flex items-center font-semibold"
-                style="color: #ad0214"
-              >
-                Hoạt động
-              </h1>
-            </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-span-7 flex flex-col">
-          <div
-            class="text-center font-bold text-2xl pt-6 pb-8"
-            style="color: #ad0214"
-          >
-            CẬP NHẬT TRẠNG THÁI HOẠT ĐỘNG
-          </div>
+      <div class="col-span-5 flex flex-col">
+        <div class="text-center font-bold text-2xl pt-6 pb-8" style="color: #ad0214">
+          CẬP NHẬT TRẠNG THÁI HOẠT ĐỘNG
+        </div>
 
-          <div
-            class="flex self-center justify-between w-[80%] grid-cols-4 gap-4"
-          >
-          <form method="post" action="/active" >
+        <div class="flex self-center justify-between w-[80%] grid-cols-4 gap-4">
+          <form method="post" action="/active" class="flex flex-cols">
             <div class="flex flex-col col-span-1">
               <span class="ml-[0.5em] font-semibold" style="color: #ad0214">
                 Đăng kí theo:
               </span>
-              <div class="dropdown dropdown-hover">
-                <div
-                  id="dropdownButton-1"
-                  tabindex="0"
-                  role="button"
-                  class="btn m-1 w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none"
-                >
+              <div class="dropdown">
+                <div id="dropdownButton-1" tabindex="0" role="button"
+                  class="btn m-1 w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">
                   Danh sách
                 </div>
-                <ul
-                  class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium"
-                >
+                <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
                   <li><a href="#" class="dropdown-item-1">Kì</a></li>
                   <li><a href="#" class="dropdown-item-1">Sự kiện</a></li>
                 </ul>
@@ -537,98 +399,124 @@ body {
               <span class="ml-[0.5em] font-semibold" style="color: #ad0214">
                 Sự kiện / Kì:
               </span>
-              <div class="dropdown dropdown-hover">
-                <div
-                  id="dropdownButton-2"
-                  tabindex="0"
-                  role="button"
-                  class="btn m-1 w-full bg-[#ad0214] text-white hover:bg-red-900 border-none"
-                >
+              <div class="dropdown">
+                <div id="dropdownButton-2" tabindex="0" role="button"
+                  class="btn btn-disabled m-1 w-full bg-[#ad0214] text-white hover:bg-red-900 border-none">
                   Danh sách
                 </div>
-                <ul
-                  tabindex="0"
-                  class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium"
-                >
-                  <li><a href="#" class="dropdown-item-2 fake-1">Uniraw 2024</a></li>
-                  <li><a href="#" class="dropdown-item-2 fake-1">Algorithm Arena 2024</a></li>
-                  <li><a href="#" class="dropdown-item-2 fake-1">Teambuilding 2024</a></li>
-                  <li><a href="#" class="dropdown-item-2 fake-1">Geminus 2024</a></li>
+                <ul tabindex="0"
+                  class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
+                  <li><a href="#" class="dropdown-item-2 event">Uniraw 2024</a></li>
+                  <li><a href="#" class="dropdown-item-2 event">Algorithm Arena 2024</a></li>
+                  <li><a href="#" class="dropdown-item-2 event">Teambuilding 2024</a></li>
+                  <li><a href="#" class="dropdown-item-2 event">Geminus 2024</a></li>
 
-                  <li><a href="#" class="dropdown-item-2 fake-2">SP24</a></li>
-                  <li><a href="#" class="dropdown-item-2 fake-2">SU24</a></li>
-                  <li><a href="#" class="dropdown-item-2 fake-2">FA24</a></li>
-                  <li><a href="#" class="dropdown-item-2 fake-2">SP25</a></li>
+                  <li><a href="#" class="dropdown-item-2 sems">SP24</a></li>
+                  <li><a href="#" class="dropdown-item-2 sems">SU24</a></li>
+                  <li><a href="#" class="dropdown-item-2 sems">FA24</a></li>
+                  <li><a href="#" class="dropdown-item-2 sems">SP25</a></li>
                 </ul>
               </div>
             </div>
+        </div>
+
+        <div class="flex self-center border-2 border-dashed w-[75%] border-[#ad0214] my-5"></div>
+
+        <div class="flex self-center justify-start w-[80%] grid-cols-3 gap-8">
+          <div class="flex flex-col justify-between col-span-1">
+            <div class="flex flex-col font-semibold" style="color: #ad0214">
+              Bạn có hoạt động ko?
+
+              <div class="flex items-center my-2">
+                <input checked id="default-radio-1" type="radio" value="" name="default-radio"
+                  class="w-4 h-4 text-[#ad0214] bg-gray-100 border-gray-300 focus:ring-blue-500" />
+                <label for="default-radio-1" class="ms-2 text-sm text-gray-900 dark:text-gray-300"
+                  style="color: #ad0214">Có bạn ơi</label>
+              </div>
+              <div class="flex items-center">
+                <input id="default-radio-2" type="radio" value="" name="default-radio"
+                  class="w-4 h-4 text-[#ad0214] bg-gray-100 border-gray-300 focus:ring-blue-500" />
+                <label for="default-radio-2" class="ms-2 text-sm text-gray-900 dark:text-gray-300"
+                  style="color: #ad0214">Không nhé</label>
+              </div>
+            </div>
+
+            <input
+              class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]"
+              value="Xác nhận" type="submit">
           </div>
 
-          <div
-            class="flex self-center border-2 border-dashed w-[75%] border-[#ad0214] my-5"
-          ></div>
-
-          <div
-            class="flex self-center justify-between w-[80%] grid-cols-3 gap-4"
-          >
-            <div class="flex flex-col justify-between col-span-1">
-              <div class="flex flex-col font-semibold" style="color: #ad0214">
-                Bạn có hoạt động ko?
-
-                <div class="flex items-center my-2">
-                  <input
-                    checked
-                    id="default-radio-1"
-                    type="radio"
-                    value=""
-                    name="default-radio"
-                    class="w-4 h-4 text-[#ad0214] bg-gray-100 border-gray-300 focus:ring-blue-500"
-                  />
-                  <label
-                    for="default-radio-1"
-                    class="ms-2 text-sm text-gray-900 dark:text-gray-300"
-                    style="color: #ad0214"
-                    >Có bạn ơi</label
-                  >
-                </div>
-                <div class="flex items-center">
-                  <input
-                    id="default-radio-2"
-                    type="radio"
-                    value=""
-                    name="default-radio"
-                    class="w-4 h-4 text-[#ad0214] bg-gray-100 border-gray-300 focus:ring-blue-500"
-                  />
-                  <label
-                    for="default-radio-2"
-                    class="ms-2 text-sm text-gray-900 dark:text-gray-300"
-                    style="color: #ad0214"
-                    >Không nhé</label
-                  >
-                </div>
-              </div>
-
-              <input
-                class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]" value="Xác nhận" type="submit"
-              >
+          <div class="flex flex-col col-span-4 w-full">
+            <div class="font-semibold" style="color: #ad0214">
+              Lý do / Lời nhắn nhủ:
+              <textarea id="message" rows="4"
+                class="block my-1 p-5 h-[150px] w-full text-sm text-gray-900 bg-[#ffe6e9] rounded-lg border border-[#ad0214] focus:ring-blue-500 focus:border-blue-500"></textarea>
             </div>
-
-            <div class="flex flex-col col-span-4">
-              <div class="font-semibold" style="color: #ad0214">
-                Lý do / Lời nhắn nhủ:
-                <textarea
-                  id="message"
-                  rows="4"
-                  class="block my-1 p-5 h-[150px] w-96 text-sm text-gray-900 bg-[#ffe6e9] rounded-lg border border-[#ad0214] focus:ring-blue-500 focus:border-blue-500"
-                ></textarea>
-              </div>
-            </div>
+          </div>
           </form>
+        </div>
+
+      </div>
+
+      <div class="col-span-3 flex flex-col">
+        <div class="flex flex-row justify-start mr-16 border-b-4  border-[#ad0214]">
+          <p class="text-[#ad0214] font-bold text-xl pb-8 pt-6"> RECENT ACTIVE SIGNUP </p>
+          <div class="border-b-2  border-[#ad0214] flex flex-col">
+            <div class="flex flex-row justify-between">
+
+
+            </div>
+            <div class="flex flex-row justify-between">
+
+
+            </div>
           </div>
-          
         </div>
       </div>
     </div>
-    <!-- Main Display-->
-  </body>
+  </div>
+  <!-- Main Display-->
+</body>
+
+<script>
+  window.onload = function () {
+    document.querySelectorAll('.dropdown-item-1').forEach(item => {
+      item.addEventListener('click', event => {
+        event.preventDefault();
+        const dropdownButton = document.getElementById('dropdownButton-1');
+        dropdownButton.innerHTML = event.target.innerHTML;
+
+        const eventElements = document.getElementsByClassName('event');
+        const semsElements = document.getElementsByClassName('sems');
+
+        if (dropdownButton.innerHTML == "Kì") {
+          document.getElementById('dropdownButton-2').classList.remove('btn-disabled');
+          for (let i = 0; i < eventElements.length; i++) {
+            eventElements[i].style.display = "none";
+          }
+          for (let i = 0; i < semsElements.length; i++) {
+            semsElements[i].style.display = "block";
+          }
+        } else if (dropdownButton.innerHTML == "Sự kiện") {
+          document.getElementById('dropdownButton-2').classList.remove('btn-disabled');
+          for (let i = 0; i < eventElements.length; i++) {
+            eventElements[i].style.display = "block";
+          }
+          for (let i = 0; i < semsElements.length; i++) {
+            semsElements[i].style.display = "none";
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll('.dropdown-item-2').forEach(item => {
+      item.addEventListener('click', event => {
+        event.preventDefault();
+        const dropdownButton = document.getElementById('dropdownButton-2');
+        dropdownButton.innerHTML = event.target.innerHTML;
+      });
+    });
+  };
+</script>
+
 </html>
