@@ -4,6 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { config } from 'dotenv';
 import * as cookieParser from 'cookie-parser';
+import * as bodyParser from 'body-parser';
 
 config();
 
@@ -14,6 +15,7 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('handlebars');
   app.use(cookieParser());
+  app.use(bodyParser.json());
 
   await app.listen(3000);
 }

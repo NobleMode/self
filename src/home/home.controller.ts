@@ -17,7 +17,7 @@ export class HomeController {
             name: await this.hS.getInfo(username, "name"),
             rollno: (await this.hS.getInfo(username, "rollno")).toLocaleUpperCase(),
             dob: new Date(await this.hS.getInfo(username, "dob")).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }),
-            dept: await this.hS.getRef(username, "dep"),
+            dept: await this.hS.getRef(username, "dept"),
             role: await this.hS.getRef(username, "role"),
         };
     }

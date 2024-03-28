@@ -20,7 +20,7 @@ export class ProfileController {
             phone: await this.pS.getInfo(username, "phone"),
             loc: await this.pS.getInfo(username, "address"),
             dob: new Date(await this.pS.getInfo(username, "dob")).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }),
-            dept: await this.pS.getRef(username, "dep"),
+            dept: await this.pS.getRef(username, "dept"),
             role: await this.pS.getRef(username, "role"),
             gen: await this.pS.getInfo(username, "gen"),
         };

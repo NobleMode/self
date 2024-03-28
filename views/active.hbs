@@ -323,7 +323,8 @@
   <!-- Main Display-->
   <div class="main-display py-[3em]">
     <div class="grid grid-cols-12 gap-4 h-[600px]">
-      <div class="col-start-2 col-span-3 flex flex-col">
+      <!-- Profile Display-->
+      <div class="col-start-2 col-span-2 flex flex-col">
         <div class="avatar flex flex-col items-center pb-8 ms-2">
           <div class="border w-36 rounded-full shadow-md p-4">
             <img
@@ -355,38 +356,25 @@
             {{ role }}
           </h1>
         </div>
-
-        <div class="flex justify-center ms-8">
-          <span class="font-bold bg-[#ffe6e9] py-1 px-4 mr-8 rounded-full" style="color: #ad0214">
-            Trạng Thái
-          </span>
-
-          <div class="flex">
-            <span class="isActive text-xl pr-4 text-green-700">●</span>
-
-            <h1 class="flex items-center font-semibold" style="color: #ad0214">
-              Hoạt động
-            </h1>
-          </div>
-        </div>
       </div>
 
-      <div class="col-span-5 flex flex-col">
+      <!-- Active Signup-->
+      <form id="activeSignup" class="col-span-4 flex flex-col">
+        <!-- Name -->
         <div class="text-center font-bold text-2xl pt-6 pb-8" style="color: #ad0214">
           CẬP NHẬT TRẠNG THÁI HOẠT ĐỘNG
         </div>
 
+        <!-- type section -->
         <div class="flex self-center justify-between w-[80%] grid-cols-4 gap-4">
-          <form method="post" action="/active" class="flex flex-cols">
+          <div class="flex flex-cols">
             <div class="flex flex-col col-span-1">
               <span class="ml-[0.5em] font-semibold" style="color: #ad0214">
                 Đăng kí theo:
               </span>
               <div class="dropdown">
                 <div id="dropdownButton-1" tabindex="0" role="button"
-                  class="btn m-1 w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">
-                  Danh sách
-                </div>
+                  class="btn m-1 w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">Danh sách</div>
                 <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
                   <li><a href="#" class="dropdown-item-1">Kì</a></li>
                   <li><a href="#" class="dropdown-item-1">Sự kiện</a></li>
@@ -401,27 +389,26 @@
               </span>
               <div class="dropdown">
                 <div id="dropdownButton-2" tabindex="0" role="button"
-                  class="btn btn-disabled m-1 w-full bg-[#ad0214] text-white hover:bg-red-900 border-none">
-                  Danh sách
-                </div>
+                  class="btn btn-disabled m-1 w-full bg-[#ad0214] text-white hover:bg-red-900 border-none">Danh sách</div>
                 <ul tabindex="0"
                   class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
-                  <li><a href="#" class="dropdown-item-2 event">Uniraw 2024</a></li>
-                  <li><a href="#" class="dropdown-item-2 event">Algorithm Arena 2024</a></li>
-                  <li><a href="#" class="dropdown-item-2 event">Teambuilding 2024</a></li>
-                  <li><a href="#" class="dropdown-item-2 event">Geminus 2024</a></li>
+                  {{#each event}}
+                  <li><a href="#" class="dropdown-item-2 event">{{this.name}}</a></li>
+                  {{/each}}
 
-                  <li><a href="#" class="dropdown-item-2 sems">SP24</a></li>
-                  <li><a href="#" class="dropdown-item-2 sems">SU24</a></li>
-                  <li><a href="#" class="dropdown-item-2 sems">FA24</a></li>
-                  <li><a href="#" class="dropdown-item-2 sems">SP25</a></li>
+                  {{#each sems}}
+                  <li><a href="#" class="dropdown-item-2 sems">{{this.name}}</a></li>
+                  {{/each}}
                 </ul>
               </div>
             </div>
+          </div>
         </div>
 
+        <!-- Divider -->
         <div class="flex self-center border-2 border-dashed w-[75%] border-[#ad0214] my-5"></div>
 
+        <!-- sign up form -->
         <div class="flex self-center justify-start w-[80%] grid-cols-3 gap-8">
           <div class="flex flex-col justify-between col-span-1">
             <div class="flex flex-col font-semibold" style="color: #ad0214">
@@ -441,9 +428,9 @@
               </div>
             </div>
 
-            <input
+            <button
               class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]"
-              value="Xác nhận" type="submit">
+              type="submit">Xác nhận</button>
           </div>
 
           <div class="flex flex-col col-span-4 w-full">
@@ -453,28 +440,46 @@
                 class="block my-1 p-5 h-[150px] w-full text-sm text-gray-900 bg-[#ffe6e9] rounded-lg border border-[#ad0214] focus:ring-blue-500 focus:border-blue-500"></textarea>
             </div>
           </div>
-          </form>
         </div>
+      </form>
+      <!-- End Active Signup-->
 
-      </div>
-
-      <div class="col-span-3 flex flex-col">
-        <div class="flex flex-row justify-start mr-16 border-b-4  border-[#ad0214]">
-          <p class="text-[#ad0214] font-bold text-xl pb-8 pt-6"> RECENT ACTIVE SIGNUP </p>
-          <div class="border-b-2  border-[#ad0214] flex flex-col">
-            <div class="flex flex-row justify-between">
-
+      <!-- Recent Active Signup-->
+      <div class="col-span-4 flex flex-col">
+        <div class="flex flex-col justify-start w-[80%] self-center">
+          <p class="text-[#ad0214] font-bold text-xl pb-4 pt-6"> RECENT ACTIVE SIGNUP </p>
+          <div class="flex flex-row columns-2 gap-8">
+            <div class="col-span-1 w-full">
+              <p class="text-[#ad0214] font-bold text-xl pb-2 pt-2 border-b-4  border-[#ad0214]"> Kì </p>
+              <!-- Add Items here -->
+              <div class="flex flex-col border-[#ad0214] border-b-2">
+                <div class="flex justify-between">
+                  <p class="text-[#ad0214]">Test 1</p>
+                  <p class="text-[#ad0214]">Active</p>
+                </div>
+                <a href="#" class="text-[#ad0214] font-bold flex justify-end">Details >>></a>
+              </div>
 
             </div>
-            <div class="flex flex-row justify-between">
-
-
+            <div class="col-span-1 w-full">
+              <p class="text-[#ad0214] font-bold text-xl pb-2 pt-2 border-b-4  border-[#ad0214]"> Sự kiện </p>
+              <!-- Add Items here -->
+              <div class="flex flex-col border-[#ad0214] border-b-2">
+                <div class="flex justify-between">
+                  <p class="text-[#ad0214]">Test 1</p>
+                  <p class="text-[#ad0214]">Active</p>
+                </div>
+                <a href="#" class="text-[#ad0214] font-bold flex justify-end">Details >>></a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
+
   <!-- Main Display-->
 </body>
 
@@ -517,6 +522,56 @@
       });
     });
   };
+
+  document.getElementById('activeSignup').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    if (document.getElementById('dropdownButton-1').innerHTML === 'Danh sách') {
+      alert('Vui lòng chọn kì hoặc sự kiện');
+      return;
+    } else if (document.getElementById('dropdownButton-2').innerHTML === 'Danh sách') {
+      alert('Vui lòng chọn sự kiện hoặc kì');
+      return;
+    }
+
+    var section = document.getElementById('dropdownButton-1').innerHTML;
+    var sectionValue = document.getElementById('dropdownButton-2').innerHTML;
+
+    if (section === 'Kì') {
+      section = 'sem';
+    } else {
+      section = 'event';
+    }
+
+    var active = document.getElementById('default-radio-1').checked ? true : false;
+    var message = document.getElementById('message').value;
+
+    fetch('/active/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+        {
+          section: section,
+          sectionValue: sectionValue,
+          active: active,
+          message: message
+        }
+      )
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.redirectUrl) {
+          window.location.href = data.redirectUrl;
+        } else {
+          var notification = document.getElementById('notification');
+          notification.style.display = 'block';
+          setTimeout(function () {
+            notification.style.display = 'none';
+          }, 10000); // Hide the notification after 20 seconds
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  });
 </script>
 
 </html>
