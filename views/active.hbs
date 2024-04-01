@@ -435,7 +435,7 @@
 
           <div class="flex flex-col col-span-4 w-full">
             <div class="font-semibold" style="color: #ad0214">
-              Lý do / Lời nhắn nhủ:
+              Lý do / Lời nhắn nhủ: (Không yêu cầu)
               <textarea id="message" rows="4"
                 class="block my-1 p-5 h-[150px] w-full text-sm text-gray-900 bg-[#ffe6e9] rounded-lg border border-[#ad0214] focus:ring-blue-500 focus:border-blue-500"></textarea>
             </div>
@@ -447,30 +447,48 @@
       <!-- Recent Active Signup-->
       <div class="col-span-4 flex flex-col">
         <div class="flex flex-col justify-start w-[80%] self-center">
-          <p class="text-[#ad0214] font-bold text-xl pb-4 pt-6"> RECENT ACTIVE SIGNUP </p>
+          <div class="flex flex-row justify-between">
+            <p class="text-[#ad0214] font-bold text-xl pb-4 pt-6"> RECENT ACTIVE SIGNUP </p>
+            <div class="dropdown" style="display: {{#if perm}}block{{else}}none{{/if}}">
+              <div id="adminShowAll" tabindex="0" role="button"
+                class="btn m-1 w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">Show All</div>
+              <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
+                <li><a href="#" class="dropdown-1">Cá nhân</a></li>
+                <li><a href="#" class="dropdown-1">Kì</a></li>
+                <li><a href="#" class="dropdown-1">Sự kiện</a></li>
+              </ul>
+            </div>
+          </div>
+
           <div class="flex flex-row columns-2 gap-8">
             <div class="col-span-1 w-full">
               <p class="text-[#ad0214] font-bold text-xl pb-2 pt-2 border-b-4  border-[#ad0214]"> Kì </p>
               <!-- Add Items here -->
-              <div class="flex flex-col border-[#ad0214] border-b-2">
+              {{#each activeSem}}
+              <div value="Kì" class="flex flex-col border-[#ad0214] border-b-2">
                 <div class="flex justify-between">
-                  <p class="text-[#ad0214]">Test 1</p>
-                  <p class="text-[#ad0214]">Active</p>
+                  <p id="name" class="text-[#ad0214]">{{name}}</p>
+                  <p id="active" class="text-[#ad0214]">{{#if status}} Active {{else}} Not Active {{/if}}</p>
                 </div>
-                <a href="#" class="text-[#ad0214] font-bold flex justify-end">Details >>></a>
+                <p id="note" style="display: none">{{note}}</p>
+                <a href="#" onclick="showDetails(event, this)" class="text-[#ad0214] font-bold flex justify-end">Details >>></a>
               </div>
+              {{/each}}
 
             </div>
             <div class="col-span-1 w-full">
               <p class="text-[#ad0214] font-bold text-xl pb-2 pt-2 border-b-4  border-[#ad0214]"> Sự kiện </p>
               <!-- Add Items here -->
-              <div class="flex flex-col border-[#ad0214] border-b-2">
+              {{#each activeEvent}}
+              <div value="Sự kiện" class="flex flex-col border-[#ad0214] border-b-2">
                 <div class="flex justify-between">
-                  <p class="text-[#ad0214]">Test 1</p>
-                  <p class="text-[#ad0214]">Active</p>
+                  <p id="name" class="text-[#ad0214]">{{name}}</p>
+                  <p id="active" class="text-[#ad0214]">{{#if status}} Active {{else}} Not Active {{/if}}</p>
                 </div>
-                <a href="#" class="text-[#ad0214] font-bold flex justify-end">Details >>></a>
+                <p id="note" style="display: none">{{note}}</p>
+                <a href="#" onclick="showDetails(event, this)" class="text-[#ad0214] font-bold flex justify-end">Details >>></a>
               </div>
+              {{/each}}
             </div>
           </div>
         </div>
@@ -491,26 +509,7 @@
         const dropdownButton = document.getElementById('dropdownButton-1');
         dropdownButton.innerHTML = event.target.innerHTML;
 
-        const eventElements = document.getElementsByClassName('event');
-        const semsElements = document.getElementsByClassName('sems');
-
-        if (dropdownButton.innerHTML == "Kì") {
-          document.getElementById('dropdownButton-2').classList.remove('btn-disabled');
-          for (let i = 0; i < eventElements.length; i++) {
-            eventElements[i].style.display = "none";
-          }
-          for (let i = 0; i < semsElements.length; i++) {
-            semsElements[i].style.display = "block";
-          }
-        } else if (dropdownButton.innerHTML == "Sự kiện") {
-          document.getElementById('dropdownButton-2').classList.remove('btn-disabled');
-          for (let i = 0; i < eventElements.length; i++) {
-            eventElements[i].style.display = "block";
-          }
-          for (let i = 0; i < semsElements.length; i++) {
-            semsElements[i].style.display = "none";
-          }
-        }
+        showHide(dropdownButton);
       });
     });
 
@@ -522,6 +521,57 @@
       });
     });
   };
+
+  function showHide(dropdownButton) {
+    const eventElements = document.getElementsByClassName('event');
+    const semsElements = document.getElementsByClassName('sems');
+    const dropdownButton2 = document.getElementById('dropdownButton-2');
+
+    if (dropdownButton.innerHTML == "Kì") {
+        dropdownButton2.classList.remove('btn-disabled');
+        for (let i = 0; i < eventElements.length; i++) {
+            eventElements[i].style.display = "none";
+        }
+        for (let i = 0; i < semsElements.length; i++) {
+            semsElements[i].style.display = "block";
+        }
+        // Set dropdownButton-2 to the first child of the 'sems' section
+        if (semsElements[0]) {
+            dropdownButton2.innerHTML = semsElements[0].innerHTML;
+        }
+    } else if (dropdownButton.innerHTML == "Sự kiện") {
+        dropdownButton2.classList.remove('btn-disabled');
+        for (let i = 0; i < eventElements.length; i++) {
+            eventElements[i].style.display = "block";
+        }
+        for (let i = 0; i < semsElements.length; i++) {
+            semsElements[i].style.display = "none";
+        }
+        // Set dropdownButton-2 to the first child of the 'event' section
+        if (eventElements[0]) {
+            dropdownButton2.innerHTML = eventElements[0].innerHTML;
+        }
+    }
+}
+
+  function showDetails(event, element) {
+    event.preventDefault();
+    var div = element.parentElement; // This is the div that contains the clicked "Details >>>" link
+    var value = div.getAttribute('value');
+    var name = div.querySelector('#name').innerText;
+    var status = div.querySelector('#active').innerText == 'Active' ? true : false;
+    var note = div.querySelector('#note').innerText;
+
+    document.getElementById('dropdownButton-1').innerHTML = value;
+    showHide(document.getElementById('dropdownButton-1'));
+    document.getElementById('dropdownButton-2').innerHTML = name;
+    document.getElementById('dropdownButton-2').classList.remove('btn-disabled');
+    document.getElementById('default-radio-1').checked = status;
+    document.getElementById('default-radio-2').checked = !status;
+    document.getElementById('message').value = note;
+
+    
+  }
 
   document.getElementById('activeSignup').addEventListener('submit', function (event) {
     event.preventDefault();

@@ -19,6 +19,8 @@ export class LoginService {
 
         if (user && user.rows.length > 0) {
         const { password, ...result } = user.rows[0];
+
+        console.log(result);
         return result;
         }
         return null;
@@ -30,7 +32,19 @@ export class LoginService {
         return null;
         }
 
-        const payload = { username: user.username, sub: user.userId };
+        var perm;
+
+        if (user.role_id == "TV" || user.role_id == "CTV") {
+            perm = "member";
+        } else if (user.role_id == "TB") {
+            perm = "dept_admin";
+        } else if (user.role_id == "CN" || user.role_id == "PCN") {
+            perm = "admin";
+        }
+
+        const payload = { username: user.username, sub: user.rollno, perm: perm};
+
+        console.log(payload);
 
         return this.jwtService.sign(payload);
     }

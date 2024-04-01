@@ -5,7 +5,6 @@ import { join } from 'path';
 import { config } from 'dotenv';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
-
 config();
 
 async function bootstrap() {
