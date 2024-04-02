@@ -313,28 +313,13 @@
 
   <div class="my-12">
     <div class="flex flex-row justify-between w-full px-16">
-        <div class="flex flex-row gap-4">
-          <label class="input border bg-white border-[#ad0214] rounded-2xl flex items-center gap-2 h-12">
-            <a><span class="material-icons" aria-hidden="true" style="color: #ad0214">
+        <div  class="flex flex-row gap-4">
+          <label  class="input border bg-white border-[#ad0214] rounded-2xl flex items-center gap-2 h-12 w-96">
+            <span class="material-icons" aria-hidden="true" style="color: #ad0214; margin: 0 0.5em;">
               search
-            </span></a>
-            <input type="text" class="grow" placeholder="Search" style="color: #ad0214" />
+            </span>
+            <input id="searchInput" type="text" class="grow w-full" placeholder="Search" style="color: #ad0214;" />
           </label>
-
-          <div class="dropdown dropdown-right">
-            <div tabindex="0" role="button" class="btn rounded-lg menu-button flex material-icons"
-              style="width: 45px; height: 45px;">
-              person
-            </div>
-            <ul tabindex="0"
-              class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-box w-24 font-bold text-red-800">
-              <li class="click rounded-lg"><a>Gen 8</a></li>
-              <li class="click rounded-lg"><a>Gen 9</a></li>
-              <li class="click rounded-lg"><a>Gen 10</a></li>
-              <li class="click rounded-lg"><a>Gen 11</a></li>
-              <li class="click rounded-lg"><a>Gen 12</a></li>
-            </ul>
-          </div>
         </div>
       
         <div class="flex flex-row gap-2">
@@ -348,18 +333,95 @@
         </div>
     </div>
 
-    <div class="bg-red-50 rounded-3xl mx-16 my-4 h-[60vh] p-4">
+    <div id="table" class="bg-red-50 rounded-3xl mx-16 my-4 h-[65vh] p-4">
       <div class="grid grid-cols-[100px_repeat(13,minmax(0,1fr))_100px] text-center font-bold text-[#ad0214] gap-2 p-4">
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-1">STT</div>
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-2">MSSV</div>
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-3">Họ Tên</div>
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-2">Ban</div>
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-2">Vai Trò</div>
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-3">Mail</div>
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-1">Gen</div>
-        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-1">Edit</div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-1 flex flex-row justify-center items-center">STT</div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-2 flex flex-row justify-center items-center">
+          MSSV
+          <div class="dropdown dropdown-hover">
+            <div tabindex="0" class="m-1 flex material-icons">
+              arrow_drop_down
+            </div>
+            <ul
+              tabindex="0"
+              class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-lg w-16"
+            >
+              <li class="click rounded-lg"><a>All</a></li>
+              <li class="click rounded-lg"><a>HA</a></li>
+              <li class="click rounded-lg"><a>HE</a></li>
+              <li class="click rounded-lg"><a>HS</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-3 flex flex-row justify-center items-center">
+          Họ Tên
+          <div class="dropdown dropdown-hover">
+            <div tabindex="0" class="flex flex-row material-icons">
+              arrow_drop_down
+
+            </div>
+            <ul
+              tabindex="0"
+              class="dropdown-content z-[1] w-20 menu shadow bg-[#ffedee] rounded-lg"
+            >
+              <li class="click rounded-lg"><a>No Sort</a></li>
+              <li class="click rounded-lg"><a>A - Z</a></li>
+              <li class="click rounded-lg"><a>Z - A</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-2 flex flex-row justify-center items-center">
+          Ban
+          <div class="dropdown dropdown-hover">
+            <div tabindex="0" class="m-1 flex material-icons">
+              arrow_drop_down
+            </div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-lg w-44">
+              <li class="click rounded-lg"><a>All</a></li>
+              <li class="click rounded-lg"><a>Chuyên môn</a></li>
+              <li class="click rounded-lg"><a>Truyền thông</a></li>
+              <li class="click rounded-lg"><a>Văn hóa</a></li>
+              <li class="click rounded-lg"><a>Đối ngoại</a></li>
+              <li class="click rounded-lg"><a>Nội dung</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-2 flex flex-row justify-center items-center">
+          Vai Trò
+          <div class="dropdown dropdown-hover">
+            <div tabindex="0" class="m-1 flex material-icons">
+              arrow_drop_down
+            </div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-[#ffedee] rounded-lg w-44">
+              <li class="click rounded-lg"><a>All</a></li>
+              <li class="click rounded-lg"><a>Chủ nhiệm</a></li>
+              <li class="click rounded-lg"><a>Phó chủ nhiệm</a></li>
+              <li class="click rounded-lg"><a>Trưởng ban</a></li>
+              <li class="click rounded-lg"><a>Thành viên</a></li>
+              <li class="click rounded-lg"><a>Cộng tác viên</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-3 flex flex-row justify-center items-center">Mail</div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-1 flex flex-row justify-center items-center">
+          Gen
+          <div class="dropdown dropdown-hover">
+            <div tabindex="0" class="flex flex-row material-icons">
+              arrow_drop_down
+            </div>
+            <ul
+              tabindex="0"
+              class="dropdown-content z-[1] w-28 menu shadow bg-[#ffedee] rounded-lg"
+            >
+              <li class="click rounded-lg"><a>No Sort</a></li>
+              <li class="click rounded-lg material-icons"><a>keyboard_double_arrow_up</a></li>
+              <li class="click rounded-lg material-icons"><a>keyboard_double_arrow_down</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-red-200 py-2 px-4 rounded-xl col-span-1 flex flex-row justify-center items-center">Edit</div>
       </div>
-      <div id="showList" class="flex flex-col overflow-y-scroll h-[85%] pl-4">
+      <div id="showList" class="flex flex-col overflow-y-auto h-[85%] pl-4">
         {{#each memList}}
         <div class="grid grid-cols-[100px_repeat(13,minmax(0,1fr))_100px] text-center font-bold text-[#ad0214] py-2 gap-2">
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-1">{{@index}}</div>
@@ -367,22 +429,17 @@
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-3">{{name}}</div>
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-2">{{dept}}</div>
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-2">{{role}}</div>
-          <div class="bg-red-200 py-2 px-4 rounded-xl col-span-3">{{mail}}</div>
+          <div class="bg-red-100 py-2 px-4 rounded-xl col-span-3">{{mail}}</div>
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-1">{{gen}}</div>
-          <div class="bg-red-100 py-2 px-4 rounded-xl col-span-1">
+          <div class="bg-red-100 py-2 px-4 rounded-xl col-span-1 flex flex-row justify-between">
+            <input type="checkbox" id="editCheckbox">
+            <a href="/updateInsert?id={{rollno}}" class="flex material-icons">
+              edit
+            </a>
           </div>
         </div>
         {{/each}}
       </div>
-    </div>
-
-    <div class="flex flex-row justify-end px-16">
-      <button class="bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-6 rounded-full">
-        Chỉnh sửa
-      </button>
-      <button class="bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-6 rounded-full">
-        Lưu
-      </button>
     </div>
   </div>
   
@@ -398,6 +455,113 @@
             showListDiv.classList.add('pr-4');
         }
     };
+</script>
+
+<script>
+    function updateShowList(members) {
+      const showListDiv = document.querySelector('#showList');
+      showListDiv.innerHTML = ''; // Clear the existing contents
+      if (Array.isArray(members)) {
+          members.forEach((member, index) => {
+            const memberDiv = document.createElement('div');
+            memberDiv.className = 'grid grid-cols-[100px_repeat(13,minmax(0,1fr))_100px] text-center font-bold text-[#ad0214] py-2 gap-2';
+            
+            const indexDiv = document.createElement('div');
+            indexDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-1';
+            indexDiv.textContent = index;
+            memberDiv.appendChild(indexDiv);
+
+            const rollnoDiv = document.createElement('div');
+            rollnoDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-2';
+            rollnoDiv.textContent = member.rollno;
+            memberDiv.appendChild(rollnoDiv);
+
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-3';
+            nameDiv.textContent = member.name;
+            memberDiv.appendChild(nameDiv);
+
+            const deptDiv = document.createElement('div');
+            deptDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-2';
+            deptDiv.textContent = member.dept;
+            memberDiv.appendChild(deptDiv);
+
+            const roleDiv = document.createElement('div');
+            roleDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-2';
+            roleDiv.textContent = member.role;
+            memberDiv.appendChild(roleDiv);
+
+            const mailDiv = document.createElement('div');
+            mailDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-3';
+            mailDiv.textContent = member.mail;
+            memberDiv.appendChild(mailDiv);
+
+            const genDiv = document.createElement('div');
+            genDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-1';
+            genDiv.textContent = member.gen;
+            memberDiv.appendChild(genDiv);
+
+            const editDiv = document.createElement('div');
+            editDiv.className = 'bg-red-100 py-2 px-4 rounded-xl col-span-1 flex flex-row justify-between';
+            
+            const editCheckbox = document.createElement('input');
+            editCheckbox.type = 'checkbox';
+            editCheckbox.id = 'editCheckbox';
+            editDiv.appendChild(editCheckbox);
+            
+            const editLink = document.createElement('a');
+            editLink.href = '/updateInsert?id=' + member.rollno;
+            editLink.className = 'flex material-icons';
+            editLink.textContent = 'edit';
+            editDiv.appendChild(editLink);
+            
+            memberDiv.appendChild(editDiv);
+
+            showListDiv.appendChild(memberDiv);
+          });
+      } else {
+          console.error('DB Error');
+      }
+    }
+
+    document.querySelectorAll('.click a').forEach(function(a) {
+        a.addEventListener('click', function(event) {
+            event.preventDefault();
+            const sortCriteria = a.textContent;
+            fetch(`/infor/sort?criteria=${sortCriteria}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    updateShowList(data.members);
+                  }
+                )
+                .catch(error => {
+                  console.error('There has been a problem with your fetch operation:', error);
+                });
+        });
+    });
+
+    const searchInput = document.querySelector('#searchInput');
+    searchInput.addEventListener('input', function() {
+        const searchCriteria = searchInput.value;
+        fetch(`/infor/search?criteria=${searchCriteria}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                updateShowList(data.members);
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    });
 </script>
 
 </html>

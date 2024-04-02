@@ -1,4 +1,4 @@
-import { Controller, Render, Get, Req, UseGuards} from '@nestjs/common';
+import { Controller, Render, Get, Req, UseGuards, Query} from '@nestjs/common';
 import { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { ListService } from './list.service';
@@ -22,5 +22,17 @@ export class ListController {
 
             memList: await this.lS.getAll(),
         };
+    }
+
+    @Get('sort')
+    async sortMembersBy(@Query('criteria') criteria) {
+        const members = await this.lS.sortMembersBy(criteria);
+        return { members };
+    }
+
+    @Get('search')
+    async searchMembers(@Query('criteria') criteria) {
+        const members = await this.lS.searchMembers(criteria);
+        return { members };
     }
 }
