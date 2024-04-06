@@ -8,6 +8,7 @@ import { GlobalJwtModule } from './db-connect/globalJWT.module';
 import { ProfileModule } from './profile/profile.module';
 import { ActiveSignModule } from './active-sign/active-sign.module';
 import { ListModule } from './list/list.module';
+import { UpdateInsertModule } from './update-insert/update-insert.module';
 
 
 @Module({
@@ -15,7 +16,7 @@ import { ListModule } from './list/list.module';
     LoginModule,
     HomeModule,
     LogoutModule,     
-    GlobalJwtModule, ProfileModule, ActiveSignModule, ListModule
+    GlobalJwtModule, ProfileModule, ActiveSignModule, ListModule, UpdateInsertModule
   ],
   controllers: [AppController],
   providers: [AppService],

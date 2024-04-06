@@ -1,4 +1,4 @@
-import { Controller, Render, Get, Req, UseGuards, Query} from '@nestjs/common';
+import { Controller, Render, Get, Req, UseGuards, Query, Post, Body} from '@nestjs/common';
 import { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { ListService } from './list.service';
@@ -33,6 +33,15 @@ export class ListController {
     @Get('search')
     async searchMembers(@Query('criteria') criteria) {
         const members = await this.lS.searchMembers(criteria);
+        return { members };
+    }
+
+    @Post('delete')
+    async deleteMembers(@Body('rollnos') rollnos: string[]) {
+        for (const rollno of rollnos) {
+            await this.lS.deleteMember(rollno.toLocaleLowerCase());
+        }
+        const members = await this.lS.getAll();
         return { members };
     }
 }

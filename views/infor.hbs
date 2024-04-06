@@ -323,12 +323,12 @@
         </div>
       
         <div class="flex flex-row gap-2">
-          <button class="btn rounded-lg menu-button flex material-icons" style="width: 45px">
+          <button id="deleteButton" class="btn rounded-lg menu-button flex material-icons" style="width: 45px">
             delete
           </button>
           <button class="btn rounded-lg menu-button flex material-icons"
             style="width: 45px;">
-            add
+            <a href="/updateInsert?id=new">add</a>
           </button>
         </div>
     </div>
@@ -432,7 +432,7 @@
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-3">{{mail}}</div>
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-1">{{gen}}</div>
           <div class="bg-red-100 py-2 px-4 rounded-xl col-span-1 flex flex-row justify-between">
-            <input type="checkbox" id="editCheckbox">
+            <input type="checkbox" id="editCheckbox" value="{{rollno}}">
             <a href="/updateInsert?id={{rollno}}" class="flex material-icons">
               edit
             </a>
@@ -506,7 +506,8 @@
             
             const editCheckbox = document.createElement('input');
             editCheckbox.type = 'checkbox';
-            editCheckbox.id = 'editCheckbox';
+            editCheckbox.id = 'deleteCheckbox';
+            editCheckbox.value = member.rollno;
             editDiv.appendChild(editCheckbox);
             
             const editLink = document.createElement('a');
@@ -561,6 +562,37 @@
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
+    });
+
+    const deleteButton = document.querySelector('#deleteButton');
+    deleteButton.addEventListener('click', function() {
+        const selectedCheckboxes = document.querySelectorAll('#showList input[type="checkbox"]:checked');
+        if (selectedCheckboxes.length > 0) {
+            if (confirm('Are you sure you want to delete the selected members?')) {
+                const selectedRollnos = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+                fetch('/infor/delete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ rollnos: selectedRollnos }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    updateShowList(data.members);
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+            }
+        } else {
+            alert('No members selected');
+        }
     });
 </script>
 

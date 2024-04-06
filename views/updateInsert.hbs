@@ -23,6 +23,7 @@
 
   <!-- CSS -->
   <link href="main.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 </head>
 
 <script>
@@ -329,16 +330,20 @@
           src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
           alt="JS Club" />
       </div>
+      
+      <div class="flex justify-center mt-4">
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2">Confirm</button>
+        <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
+      </div>
     </div>
     <div class="flex flex-col w-full">
-      <span class="text-3xl text-red-800 font-bold mt-16 ms-56">
-        {{ name }}'s Profile</span>
 
       <!--Information-->
       <div
-        class="flex flex-row items-center justify-evenly rounded-2xl bg-red-50 h-80 mt-8 me-24 place-content-center p-4">
+        class="flex flex-row items-center justify-evenly rounded-2xl bg-red-50 h-96 mt-32 me-24 place-content-center p-4">
         <div class="flex flex-row h-full">
           <div class="flex flex-col justify-evenly w-36 text-center text-white">
+            <div class="font-bold bg-[#ad0214] rounded-xl py-2">Họ và Tên</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Ban</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Vai trò</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Gmail</div>
@@ -346,24 +351,40 @@
           </div>
 
           <div class="ml-8 flex flex-col justify-evenly text-red-800">
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="text" class="grow" id="name" placeholder="Address" value="{{name}}" style="color: #ad0214;" required />
+            </label>
             <div class="flex items-center font-semibold my-2">{{ dept }}</div>
             <div class="flex items-center font-semibold my-2">{{ role }}</div>
-            <div class="flex items-center font-semibold my-2">{{ mail }}</div>
-            <div class="flex items-center font-semibold my-2 overflow-hidden">{{ loc }}</div>
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="text" class="grow" id="mail" placeholder="Mail" value="{{mail}}" style="color: #ad0214;" required />
+            </label>
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="text" class="grow" id="loc" placeholder="Address" value="{{loc}}" style="color: #ad0214;" required />
+            </label>
           </div>
         </div>
 
         <div class="flex flex-row h-full">
           <div class="flex flex-col justify-evenly w-36 text-center text-white">
+            <div class="font-bold bg-[#ad0214] rounded-xl py-2">Username</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">MSSV</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Ngày sinh</div>
-            <div class="font-bold bg-[#ad0214] rounded-xl py-2">Liên hệ</div>
+            <div class="font-bold bg-[#ad0214] rounded-xl py-2">SĐT</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Gen</div>
           </div>
 
           <div class="ml-8 flex flex-col justify-evenly text-red-800">
             <div class="flex items-center font-semibold my-2">{{ rollno }}</div>
             <div class="flex items-center font-semibold my-2">{{ dob }}</div>
+            <div class="relative max-w-sm">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                </svg>
+              </div>
+              <input datepicker type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+            </div>
             <div class="flex items-center font-semibold my-2">{{ phone }}</div>
             <div class="flex items-center font-semibold my-2">{{ gen }}</div>
           </div>

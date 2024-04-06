@@ -83,4 +83,12 @@ export class ListService {
         console.log(criteria);
         return updatedRows;
     }
+
+    async deleteMember(rollno: string) {
+        await this.conn.query('BEGIN');
+        await this.conn.query('DELETE FROM public.event_active WHERE mem_id = $1', [rollno]);
+        await this.conn.query('DELETE FROM public.sem_active WHERE mem_id = $1', [rollno]);
+        await this.conn.query('DELETE FROM public.member WHERE rollno = $1', [rollno]);
+        await this.conn.query('COMMIT');
+    }
 }
