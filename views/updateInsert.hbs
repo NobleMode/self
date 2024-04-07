@@ -322,25 +322,21 @@
 
   <!-- Main Display-->
 
-  <div class="flex flex-row items-start space-x-16 ms-28">
+  <div class="flex flex-row items-start space-x-16">
     <!--avatar-->
     <div class="flex flex-col">
-      <div class="border border-red-800 w-48 rounded-full shadow-md p-7 mt-36">
+      <div class="border border-red-800 w-48 rounded-full shadow-md p-7 mt-36 mx-28">
         <img
           src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
           alt="JS Club" />
       </div>
-      
-      <div class="flex justify-center mt-4">
-        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2">Confirm</button>
-        <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">Cancel</button>
-      </div>
+
+      <p class="text-[#ad0214] font-bold text-center text-2xl mt-4">{{editaction}}Profile</p>
     </div>
     <div class="flex flex-col w-full">
 
       <!--Information-->
-      <div
-        class="flex flex-row items-center justify-evenly rounded-2xl bg-red-50 h-96 mt-32 me-24 place-content-center p-4">
+      <div class="flex flex-row items-center justify-evenly rounded-2xl bg-red-50 h-96 mt-32 me-24 place-content-center p-4">
         <div class="flex flex-row h-full">
           <div class="flex flex-col justify-evenly w-36 text-center text-white">
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Họ và Tên</div>
@@ -352,15 +348,35 @@
 
           <div class="ml-8 flex flex-col justify-evenly text-red-800">
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
-                <input type="text" class="grow" id="name" placeholder="Address" value="{{name}}" style="color: #ad0214;" required />
+                <input type="text" class="grow" id="name" placeholder="Full Name" value="{{editname}}" style="color: #ad0214;" required />
             </label>
-            <div class="flex items-center font-semibold my-2">{{ dept }}</div>
-            <div class="flex items-center font-semibold my-2">{{ role }}</div>
+            <div class="dropdown">
+              <div id="dept" tabindex="0" role="button"
+                class="btn w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">{{ editdept }}</div>
+              <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
+                <li><a href="#" class="dropdown-item-1">Chuyên Môn</a></li>
+                <li><a href="#" class="dropdown-item-1">Truyền Thông</a></li>
+                <li><a href="#" class="dropdown-item-1">Đối Ngoại</a></li>
+                <li><a href="#" class="dropdown-item-1">Văn Hóa</a></li>
+                <li><a href="#" class="dropdown-item-1">Nội Dung</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <div id="role" tabindex="0" role="button"
+                class="btn w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">{{ editrole }}</div>
+              <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
+                <li><a href="#" class="dropdown-item-1">Chủ Nhiệm</a></li>
+                <li><a href="#" class="dropdown-item-1">Phó Chủ nhiệm</a></li>
+                <li><a href="#" class="dropdown-item-1">Trưởng Ban</a></li>
+                <li><a href="#" class="dropdown-item-1">Thành Viên</a></li>
+                <li><a href="#" class="dropdown-item-1">Cộng Tác Viên</a></li>
+              </ul>
+            </div>
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
-                <input type="text" class="grow" id="mail" placeholder="Mail" value="{{mail}}" style="color: #ad0214;" required />
+                <input type="text" class="grow" id="mail" placeholder="Mail" value="{{editmail}}" style="color: #ad0214;" required />
             </label>
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
-                <input type="text" class="grow" id="loc" placeholder="Address" value="{{loc}}" style="color: #ad0214;" required />
+                <input type="text" class="grow" id="loc" placeholder="Address" value="{{editloc}}" style="color: #ad0214;" required />
             </label>
           </div>
         </div>
@@ -375,21 +391,38 @@
           </div>
 
           <div class="ml-8 flex flex-col justify-evenly text-red-800">
-            <div class="flex items-center font-semibold my-2">{{ rollno }}</div>
-            <div class="flex items-center font-semibold my-2">{{ dob }}</div>
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="text" class="grow" id="username" placeholder="Username" value="{{edituser}}" style="color: #ad0214;" required />
+            </label>
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="text" class="grow" id="rollno" placeholder="Roll Number" value="{{ editrollno }}" style="color: #ad0214;" required />
+            </label>
             <div class="relative max-w-sm">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-4 h-4 text-[#ad0214]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                 </svg>
               </div>
-              <input datepicker type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+              <input datepicker datepicker-orientation="bottom right" datepicker-format="dd/mm/yyyy" value="{{ editdob }}" type="text" class="bg-white border border-[#ad0214] text-[#ad0214] text-sm rounded-lg block w-full ps-10 p-2.5" placeholder="Select date" id="dob">
             </div>
-            <div class="flex items-center font-semibold my-2">{{ phone }}</div>
-            <div class="flex items-center font-semibold my-2">{{ gen }}</div>
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="text" class="grow" id="phone" placeholder="Phone" value="{{ editphone }}" style="color: #ad0214;" required />
+            </label>
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="text" class="grow" id="gen" placeholder="Member's Gen" value="{{ editgen }}" style="color: #ad0214;" required />
+            </label>
           </div>
         </div>
+        
+        <div class="border border-[#ad0214] border-solid h-[90%] border-opacity-50"></div>
+
+        <div class="flex flex-col justify-center mt-4">
+          <button class="bg-red-500 hover:bg-red-600 text-white w-32 font-bold py-2 px-4 rounded my-2">Confirm</button>
+          <button class="bg-gray-500 hover:bg-gray-600 text-white w-32 font-bold py-2 px-4 rounded my-2">Cancel</button>
+        </div>
       </div>
+
+
     </div>
   </div>
 

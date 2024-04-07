@@ -14,4 +14,9 @@ export class UpdateInsertService {
         const result = await this.conn.query(`SELECT o.name FROM public.member m JOIN public.${refItem} o ON m.${refItem}_id = o.${refItem}_id WHERE m.username = '${input}'`);
         return result.rows[0]['name'];
     }
+
+    async getInfoRollno(input: string, item: string): Promise<string> {
+        const result = await this.conn.query(`SELECT * FROM public.member WHERE rollno = $1`, [input]);
+        return result.rows[0][item];
+    }
 }

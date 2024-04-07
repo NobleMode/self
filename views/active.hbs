@@ -449,7 +449,8 @@
         <div class="flex flex-col justify-start w-[80%] self-center">
           <div class="flex flex-row justify-between">
             <p class="text-[#ad0214] font-bold text-xl pb-4 pt-6"> RECENT ACTIVE SIGNUP </p>
-            <div class="dropdown" style="display: {{#if perm}}block{{else}}none{{/if}}">
+            {{#if perm}}
+            <div class="dropdown">
               <div id="adminShowAll" tabindex="0" role="button"
                 class="btn m-1 w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">Show All</div>
               <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
@@ -458,6 +459,7 @@
                 <li><a href="#" class="dropdown-1">Sự kiện</a></li>
               </ul>
             </div>
+            {{/if}}
           </div>
 
           <div class="flex flex-row columns-2 gap-8">
