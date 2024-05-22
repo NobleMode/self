@@ -336,23 +336,28 @@
     <div class="flex flex-col w-full">
 
       <!--Information-->
-      <div class="flex flex-row items-center justify-evenly rounded-2xl bg-red-50 h-96 mt-32 me-24 place-content-center p-4">
+      <form id="updateInsert" class="flex flex-row items-center justify-evenly rounded-2xl bg-red-50 h-96 mt-32 me-24 place-content-center p-4">
         <div class="flex flex-row h-full">
           <div class="flex flex-col justify-evenly w-36 text-center text-white">
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Họ và Tên</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Ban</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Vai trò</div>
+            <div class="font-bold bg-[#ad0214] rounded-xl py-2">Gen</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Gmail</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Địa chỉ</div>
           </div>
 
           <div class="ml-8 flex flex-col justify-evenly text-red-800">
+
+            <!-- Name -->
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
                 <input type="text" class="grow" id="name" placeholder="Full Name" value="{{editname}}" style="color: #ad0214;" required />
             </label>
+
+            <!-- Dept -->
             <div class="dropdown">
               <div id="dept" tabindex="0" role="button"
-                class="btn w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">{{ editdept }}</div>
+                class="btn w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">{{#if editdept}}{{ editdept }}{{else}}Chọn Ban{{/if}}</div>
               <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
                 <li><a href="#" class="dropdown-item-1">Chuyên Môn</a></li>
                 <li><a href="#" class="dropdown-item-1">Truyền Thông</a></li>
@@ -361,20 +366,31 @@
                 <li><a href="#" class="dropdown-item-1">Nội Dung</a></li>
               </ul>
             </div>
+
+            <!-- Role -->
             <div class="dropdown">
               <div id="role" tabindex="0" role="button"
-                class="btn w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">{{ editrole }}</div>
+                class="btn w-48 bg-[#ad0214] text-white hover:bg-red-900 border-none">{{#if editdept}}{{ editrole }}{{else}}Chọn Vai Trò{{/if}}</div>
               <ul class="dropdown-content z-[1] menu p-2 shadow bg-red-50 rounded-box w-52 text-red-800 font-medium">
-                <li><a href="#" class="dropdown-item-1">Chủ Nhiệm</a></li>
-                <li><a href="#" class="dropdown-item-1">Phó Chủ nhiệm</a></li>
-                <li><a href="#" class="dropdown-item-1">Trưởng Ban</a></li>
-                <li><a href="#" class="dropdown-item-1">Thành Viên</a></li>
-                <li><a href="#" class="dropdown-item-1">Cộng Tác Viên</a></li>
+                <li><a href="#" class="dropdown-item-2">Chủ Nhiệm</a></li>
+                <li><a href="#" class="dropdown-item-2">Phó Chủ nhiệm</a></li>
+                <li><a href="#" class="dropdown-item-2">Trưởng Ban</a></li>
+                <li><a href="#" class="dropdown-item-2">Thành Viên</a></li>
+                <li><a href="#" class="dropdown-item-2">Cộng Tác Viên</a></li>
               </ul>
             </div>
+            
+            <!-- Gen -->
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="number" class="grow" id="gen" placeholder="Member's Gen" value="{{ editgen }}" style="color: #ad0214;" required />
+            </label>
+
+            <!-- Mail -->
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
                 <input type="text" class="grow" id="mail" placeholder="Mail" value="{{editmail}}" style="color: #ad0214;" required />
             </label>
+
+            <!-- Location -->
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
                 <input type="text" class="grow" id="loc" placeholder="Address" value="{{editloc}}" style="color: #ad0214;" required />
             </label>
@@ -386,17 +402,24 @@
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Username</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">MSSV</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">Ngày sinh</div>
+            <div class="font-bold bg-[#ad0214] rounded-xl py-2">Khóa</div>
             <div class="font-bold bg-[#ad0214] rounded-xl py-2">SĐT</div>
-            <div class="font-bold bg-[#ad0214] rounded-xl py-2">Gen</div>
+            <div class="font-bold bg-[#ad0214] rounded-xl py-2">Facebook</div>
           </div>
 
           <div class="ml-8 flex flex-col justify-evenly text-red-800">
+
+            <!-- Username -->
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
                 <input type="text" class="grow" id="username" placeholder="Username" value="{{edituser}}" style="color: #ad0214;" required />
             </label>
+
+            <!-- Roll number -->
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
-                <input type="text" class="grow" id="rollno" placeholder="Roll Number" value="{{ editrollno }}" style="color: #ad0214;" required />
+                <input type="text" class="grow" id="rollno" placeholder="Roll Number" value="{{ editrollno }}" style="color: #ad0214;" required {{#if editrollno}}readonly{{/if}}/>
             </label>
+
+            <!-- Date of birth -->
             <div class="relative max-w-sm">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                 <svg class="w-4 h-4 text-[#ad0214]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -405,11 +428,20 @@
               </div>
               <input datepicker datepicker-orientation="bottom right" datepicker-format="dd/mm/yyyy" value="{{ editdob }}" type="text" class="bg-white border border-[#ad0214] text-[#ad0214] text-sm rounded-lg block w-full ps-10 p-2.5" placeholder="Select date" id="dob">
             </div>
+
+            <!-- School Gen -->
+            <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
+                <input type="number" class="grow" id="khoa" placeholder="School Gen" value="{{ editkhoa }}" style="color: #ad0214;" required />
+            </label>
+
+            <!-- Phone -->
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
                 <input type="text" class="grow" id="phone" placeholder="Phone" value="{{ editphone }}" style="color: #ad0214;" required />
             </label>
+
+            <!-- Facebook -->
             <label class="input border bg-white border-\[3px\] border-[#ad0214] rounded-2xl flex items-center gap-2">
-                <input type="text" class="grow" id="gen" placeholder="Member's Gen" value="{{ editgen }}" style="color: #ad0214;" required />
+                <input type="text" class="grow" id="fb" placeholder="Facebook Profile Link" value="{{ editfb }}" style="color: #ad0214;" required />
             </label>
           </div>
         </div>
@@ -417,10 +449,10 @@
         <div class="border border-[#ad0214] border-solid h-[90%] border-opacity-50"></div>
 
         <div class="flex flex-col justify-center mt-4">
-          <button class="bg-red-500 hover:bg-red-600 text-white w-32 font-bold py-2 px-4 rounded my-2">Confirm</button>
-          <button class="bg-gray-500 hover:bg-gray-600 text-white w-32 font-bold py-2 px-4 rounded my-2">Cancel</button>
+          <button id="confirm" class="bg-green-600 hover:bg-green-700 text-white w-32 font-bold py-2 px-4 rounded my-2">Confirm</button>
+          <button onclick="window.location.href='/infor'" id="cancel" class="bg-gray-500 hover:bg-red-500 text-white w-32 font-bold py-2 px-4 rounded my-2">Cancel</button>
         </div>
-      </div>
+      </form>
 
 
     </div>
@@ -428,5 +460,84 @@
 
   <!-- Main Display-->
 </body>
+
+<script>
+  window.onload = function () {
+    document.querySelectorAll('.dropdown-item-1').forEach(item => {
+      item.addEventListener('click', event => {
+        event.preventDefault();
+        const dropdownButton = document.getElementById('dept');
+        dropdownButton.innerHTML = event.target.innerHTML;
+
+        showHide(dropdownButton);
+      });
+    });
+
+    document.querySelectorAll('.dropdown-item-2').forEach(item => {
+      item.addEventListener('click', event => {
+        event.preventDefault();
+        const dropdownButton = document.getElementById('role');
+        dropdownButton.innerHTML = event.target.innerHTML;
+      });
+    });
+  };
+
+  document.getElementById('updateInsert').addEventListener('submit', (event) => {
+    event.preventDefault(); 
+
+    const name = document.getElementById('name').value;
+    const dept = document.getElementById('dept').innerHTML;
+    const role = document.getElementById('role').innerHTML;
+    const mail = document.getElementById('mail').value;
+    const loc = document.getElementById('loc').value;
+    const username = document.getElementById('username').value;
+    const rollno = document.getElementById('rollno').value;
+    const dob = document.getElementById('dob').value;
+    const phone = document.getElementById('phone').value;
+    const gen = document.getElementById('gen').value;
+    const khoa = document.getElementById('khoa').value;
+    const fb = document.getElementById('fb').value;
+
+    if (name === '' || mail === '' || loc === '' || username === '' || rollno === '' || dob === '' || phone === '' || gen === '') {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    if (dept === 'Chọn Ban' || role === 'Chọn Vai Trò') {
+      alert('Please select a department and role');
+      return;
+    }
+    
+    fetch('/updateInsert/post', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        dept: dept,
+        role: role,
+        mail: mail,
+        loc: loc,
+        username: username,
+        rollno: rollno.toLowerCase(),
+        dob: dob,
+        phone: phone,
+        gen: gen,
+        khoa: khoa,
+        fb: fb,
+      }),
+    })
+      .then(response => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  });
+
+
+</script>
 
 </html>

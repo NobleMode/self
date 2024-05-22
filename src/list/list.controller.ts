@@ -2,10 +2,11 @@ import { Controller, Render, Get, Req, UseGuards, Query, Post, Body} from '@nest
 import { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { ListService } from './list.service';
+import { CommonService } from 'src/db-connect/common.service';
 
 @Controller('infor')
 export class ListController {
-    constructor(private readonly lS: ListService) { }
+    constructor(private readonly lS: ListService, private readonly cS: CommonService) { }
 
     @Get()
     @Render('infor.hbs')
@@ -13,12 +14,12 @@ export class ListController {
         const username = jwt.decode(request.cookies.jwt)['username'];
 
         return { 
-            user: await this.lS.getInfo(username, "username"),
-            name: await this.lS.getInfo(username, "name"),
-            rollno: (await this.lS.getInfo(username, "rollno")).toLocaleUpperCase(),
-            dob: new Date(await this.lS.getInfo(username, "dob")).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }),
-            dept: await this.lS.getRef(username, "dept"),
-            role: await this.lS.getRef(username, "role"),
+            user: await this.cS.getInfo(username, "username"),
+            name: await this.cS.getInfo(username, "name"),
+            rollno: (await this.cS.getInfo(username, "rollno")).toLocaleUpperCase(),
+            dob: new Date(await this.cS.getInfo(username, "dob")).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+            dept: await this.cS.getRef(username, "dept", true),
+            role: await this.cS.getRef(username, "role", true),
 
             memList: await this.lS.getAll(),
         };

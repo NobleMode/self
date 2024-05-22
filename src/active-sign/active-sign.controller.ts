@@ -4,10 +4,11 @@ import * as jwt from 'jsonwebtoken';
 import { ActiveSignService } from './active-sign.service';
 import { JwtGuard } from 'src/login/guard/jwt.guard';
 import { Response } from 'express';
+import { CommonService } from '../db-connect/common.service';
 
 @Controller('active')
 export class ActiveSignController {
-    constructor(private readonly aS: ActiveSignService) { }
+    constructor(private readonly aS: ActiveSignService, private readonly cS: CommonService) { }
 
     @Get()
     @Render('active.hbs')
@@ -26,23 +27,23 @@ export class ActiveSignController {
         console.log(await this.aS.getSE(true));
         console.log(await this.aS.getSE(false));
 
-        console.log(await this.aS.getActiveList(await this.aS.getInfo(username, "rollno"), "sem"));
-        console.log(await this.aS.getActiveList(await this.aS.getInfo(username, "rollno"), "event"));
+        console.log(await this.aS.getActiveList(await this.cS.getInfo(username, "rollno"), "sem"));
+        console.log(await this.aS.getActiveList(await this.cS.getInfo(username, "rollno"), "event"));
 
         return { 
-            user: await this.aS.getInfo(username, "username"),
-            name: await this.aS.getInfo(username, "name"),
-            rollno: (await this.aS.getInfo(username, "rollno")).toLocaleUpperCase(),
-            dob: new Date(await this.aS.getInfo(username, "dob")).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }),
-            dept: await this.aS.getRef(username, "dept"),
-            role: await this.aS.getRef(username, "role"),
+            user: await this.cS.getInfo(username, "username"),
+            name: await this.cS.getInfo(username, "name"),
+            rollno: (await this.cS.getInfo(username, "rollno")).toLocaleUpperCase(),
+            dob: new Date(await this.cS.getInfo(username, "dob")).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+            dept: await this.cS.getRef(username, "dept", true),
+            role: await this.cS.getRef(username, "role", true),
             perm: perm,
 
             sems: await this.aS.getSE(false),
             event: await this.aS.getSE(true),
 
-            activeSem: await this.aS.getActiveList(await this.aS.getInfo(username, "rollno"), "sem"),
-            activeEvent: await this.aS.getActiveList(await this.aS.getInfo(username, "rollno"), "event"),
+            activeSem: await this.aS.getActiveList(await this.cS.getInfo(username, "rollno"), "sem"),
+            activeEvent: await this.aS.getActiveList(await this.cS.getInfo(username, "rollno"), "event"),
         };
     }
 
@@ -54,7 +55,7 @@ export class ActiveSignController {
 
         console.log(body);
 
-        const id = await this.aS.getInfo(username, "rollno");
+        const id = await this.cS.getInfo(username, "rollno");
 
         console.log(id);
     

@@ -16,7 +16,11 @@ import { UpdateInsertModule } from './update-insert/update-insert.module';
     LoginModule,
     HomeModule,
     LogoutModule,     
-    GlobalJwtModule, ProfileModule, ActiveSignModule, ListModule, UpdateInsertModule
+    GlobalJwtModule,
+    ProfileModule,
+    ActiveSignModule,
+    ListModule,
+    UpdateInsertModule,
   ],
   controllers: [AppController],
   providers: [AppService],
