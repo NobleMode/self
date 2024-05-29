@@ -6,8 +6,8 @@ import { GlobalJwtModule } from 'src/db-connect/globalJWT.module';
 import { CommonService } from '../db-connect/common.service';
 
 @Module({
-  imports: [dbConnect, GlobalJwtModule, CommonService],
+  imports: [dbConnect, GlobalJwtModule],
   controllers: [ListController],
-  providers: [ListService]
+  providers: [ListService, CommonService]
 })
 export class ListModule {}

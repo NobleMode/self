@@ -9,10 +9,14 @@ import { ProfileModule } from './profile/profile.module';
 import { ActiveSignModule } from './active-sign/active-sign.module';
 import { ListModule } from './list/list.module';
 import { UpdateInsertModule } from './update-insert/update-insert.module';
+import { TestModule } from './test/test.module';
+import "reflect-metadata"
+import { TypeOrmModule } from './db-connect/db.module';
 
 
 @Module({
   imports: [
+    TypeOrmModule,
     LoginModule,
     HomeModule,
     LogoutModule,     
@@ -21,6 +25,7 @@ import { UpdateInsertModule } from './update-insert/update-insert.module';
     ActiveSignModule,
     ListModule,
     UpdateInsertModule,
+    TestModule,
   ],
   controllers: [AppController],
   providers: [AppService],

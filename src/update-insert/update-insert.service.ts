@@ -1,10 +1,10 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { PG_CONNECTION } from 'src/db-connect/constants';
-import { CommonSerivce } from '../db-connect/common.service';
+import { CommonService } from '../db-connect/common.service';
 
 @Injectable()
 export class UpdateInsertService {
-    constructor(@Inject(PG_CONNECTION) private conn: any, private readonly cs : CommonSerivce) {}
+    constructor(@Inject(PG_CONNECTION) private conn: any, private readonly cs : CommonService) {}
 
 
 
@@ -30,8 +30,9 @@ export class UpdateInsertService {
 
     // TODO - finish feature
 
-    async verifyInfo(){
-
+    async verifyInfo(start: any, end: any): Promise<any>{
+        var verifyObject = this.cs.getInfoRollno(start, "test");
+        var endObject = this.cs.getInfoRollno(end, "test");
     }
 
     //FIXME - Dept ID instead of Name

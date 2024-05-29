@@ -6,8 +6,8 @@ import { GlobalJwtModule } from 'src/db-connect/globalJWT.module';
 import { CommonService } from '../db-connect/common.service';
 
 @Module({
-  imports: [dbConnect, GlobalJwtModule, CommonService],
+  imports: [dbConnect, GlobalJwtModule],
   controllers: [ProfileController],
-  providers: [ProfileService]
+  providers: [ProfileService, CommonService]
 })
 export class ProfileModule {}
