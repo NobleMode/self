@@ -15,6 +15,6 @@ export class Role {
     @Column({type: "varchar", nullable: false})
     permissions: string;
 
-    @OneToMany(() => Member, (m) => m.role_id)
+    @OneToMany(() => Member, (m) => m.role)
     members: Member[];
 }

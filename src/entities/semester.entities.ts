@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { SemsActive } from "./semactive.entities";
 
 @Entity('semester')
 export class Semester {
@@ -13,4 +14,7 @@ export class Semester {
 
     @Column({type: "bool", nullable: false})
     status: boolean
+
+    @OneToMany(() => SemsActive, (se) => se.semester)
+    semsActive: SemsActive[]
 }

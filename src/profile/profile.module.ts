@@ -3,11 +3,11 @@ import { ProfileController } from './profile.controller';
 import { ProfileService } from './profile.service';
 import { dbConnect } from 'src/db-connect/db-connect.module';
 import { GlobalJwtModule } from 'src/db-connect/globalJWT.module';
-import { CommonService } from '../db-connect/common.service';
+import { CommonModule } from 'src/db-connect/common.module';
 
 @Module({
-  imports: [dbConnect, GlobalJwtModule],
+  imports: [dbConnect, GlobalJwtModule, CommonModule],
   controllers: [ProfileController],
-  providers: [ProfileService, CommonService]
+  providers: [ProfileService]
 })
 export class ProfileModule {}

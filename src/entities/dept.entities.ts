@@ -12,6 +12,6 @@ export class Dept {
     @Column({type: "varchar", nullable: false})
     description: string
 
-    @OneToMany(() => Member, (m) => m.dept_id)
+    @OneToMany(() => Member, (m) => m.dept)
     members: Member[]
 }

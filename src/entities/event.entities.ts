@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { EventActive } from "./eventactive.entities";
 
 @Entity('event')
 export class Event {
@@ -16,4 +17,7 @@ export class Event {
 
     @Column({type: "bool", nullable: true})
     status: boolean
+
+    @OneToMany(() => EventActive, (ea) => ea.event)
+    eventActive: EventActive[]
 }

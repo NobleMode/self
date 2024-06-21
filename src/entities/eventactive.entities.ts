@@ -1,15 +1,24 @@
-import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Member } from "./member.entities";
-import { Semester } from "./semester.entities";
+import { Event } from "./event.entities";
 
-@Entity('SemesterActive')
-export class semsActive {
+@Entity('EventActive')
+export class EventActive {
     @PrimaryGeneratedColumn()
     id: number;
 
     @ManyToOne(() => Member, (m) => m.rollno)
     member: Member;
 
-    @ManyToOne(() => Semester, (s) => s.id)
-    semester: Semester;
+    @ManyToOne(() => Event, (e) => e.id)
+    event: Event;
+
+    @Column({type: "boolean", default: false})
+    status: boolean;
+
+    @Column({type: "date", nullable: false})
+    signdate: Date;
+
+    @Column({type: "varchar", nullable: true})
+    notes: string;
 }

@@ -1,12 +1,17 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { PG_CONNECTION } from './constants';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Member } from 'src/entities/member.entities';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CommonService {
-    constructor(@Inject(PG_CONNECTION) private conn: any) {}
+    constructor(@Inject(PG_CONNECTION) private conn: any,
+    @InjectRepository(Member) private memberRepository: Repository<Member>) {}
     
     async getInfo(input: string, item: string): Promise<string> {
         const result = await this.conn.query(`SELECT * FROM public.member WHERE username = $1`, [input]);
+        const result2 = await this.memberRepository.findOne({ where: { username: input } });
         return result.rows[0][item];
     }
 

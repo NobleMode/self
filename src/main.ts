@@ -5,6 +5,7 @@ import { join } from 'path';
 import { config } from 'dotenv';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
+import { ValidationPipe } from '@nestjs/common';
 config();
 
 async function bootstrap() {
@@ -15,6 +16,7 @@ async function bootstrap() {
   app.setViewEngine('handlebars');
   app.use(cookieParser());
   app.use(bodyParser.json());
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
 }

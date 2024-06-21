@@ -1,8 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Dept } from "./dept.entities";
 import { Contact } from "./contact.entities";
 import { User } from "./user.entities";
 import { Role } from "./role.entities";
+import { EventActive } from "./eventactive.entities";
+import { SemsActive } from "./semactive.entities";
 
 @Entity('member')
 export class Member {
@@ -10,7 +12,7 @@ export class Member {
     id: number
     
     @Column({type: "varchar", nullable: false})
-    name: string
+    username: string
     
     @Column({type: "varchar", length: 8, nullable: false})
     rollno: string
@@ -26,12 +28,6 @@ export class Member {
     
     @Column({type: "smallint", nullable: false})
     schoolgen: number
-    
-    @ManyToOne(() => Dept)
-    dept_id: number
-    
-    @ManyToOne(() => Role)
-    role_id: number
 
     @OneToOne(() => Contact, (c) => c.member, {eager: true})
     @JoinColumn()
@@ -40,4 +36,18 @@ export class Member {
     @OneToOne(() => User, (u) => u.member, {eager: true})
     @JoinColumn()
     user: User
+
+    @OneToMany(() => EventActive, (ea) => ea.member)
+    eventactive: EventActive[]
+
+    @OneToMany(() => SemsActive, (sa) => sa.member)
+    semsactive: SemsActive[]
+
+    @ManyToOne(() => Dept, dept => dept.members)
+    @JoinColumn({ name: 'dept_id' }) // This line is important
+    dept: Dept
+
+    @ManyToOne(() => Role, role => role.members)
+    @JoinColumn({ name: 'role_id' }) // This line is important
+    role: Role;
 }

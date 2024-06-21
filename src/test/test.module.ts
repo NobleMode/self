@@ -3,11 +3,11 @@ import { TestController } from './test.controller';
 import { TestService } from './test.service';
 import { dbConnect } from '../db-connect/db-connect.module';
 import { GlobalJwtModule } from '../db-connect/globalJWT.module';
-import { CommonService } from '../db-connect/common.service';
+import { CommonModule } from 'src/db-connect/common.module';
 
 @Module({
-  imports: [dbConnect, GlobalJwtModule],
+  imports: [dbConnect, GlobalJwtModule, CommonModule],
   controllers: [TestController],
-  providers: [TestService, CommonService]
+  providers: [TestService]
 })
 export class TestModule {}
