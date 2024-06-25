@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoginModule } from './login/login.module';
@@ -12,10 +14,14 @@ import { UpdateInsertModule } from './update-insert/update-insert.module';
 import { TestModule } from './test/test.module';
 import "reflect-metadata"
 import { TypeOrmModule } from './db-connect/db.module';
+import { TemplateService } from './template.service';
 
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     TypeOrmModule,
     LoginModule,
     HomeModule,
@@ -28,6 +34,6 @@ import { TypeOrmModule } from './db-connect/db.module';
     TestModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, TemplateService],
 })
 export class AppModule {}

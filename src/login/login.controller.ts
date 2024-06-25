@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Render, Request, Body, Res, Session, HttpException, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, Render, Body, Res, UseGuards, Req } from '@nestjs/common';
 import { LoginService } from './login.service';
 import { Response } from 'express';
 import { authDTO } from 'src/login/dto/auth.dto';
@@ -22,7 +22,7 @@ export class LoginController {
         res.status(401).json({ message: "Login failed. You forgot password or something?" });
     } else {
         res.cookie('jwt', isLoggedIn, { httpOnly: true });
-        res.status(200).json({ message: "Login successful", redirectUrl: "/home" });
+        res.status(200).json({redirectUrl: "/home" });
     }
 }
 

@@ -1,17 +1,21 @@
 * {
     box-sizing: border-box;
 }
+
 body {
-    font-family: Verdana, sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
-.slider{
+
+.slider {
     width: 1000px;
     height: 600px;
 }
+
 img {
     border-radius: 20px;
 }
-.container{
+
+.container {
     margin: 50px;
 }
 

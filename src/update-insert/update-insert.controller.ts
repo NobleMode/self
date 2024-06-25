@@ -1,4 +1,4 @@
-import { Controller, Render, Get, Req, Param, Query, Post, Body, Res} from '@nestjs/common';
+import { Controller, Render, Get, Req, Query, Post, Body, Res} from '@nestjs/common';
 import { Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { UpdateInsertService } from './update-insert.service';

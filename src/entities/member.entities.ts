@@ -13,6 +13,9 @@ export class Member {
     
     @Column({type: "varchar", nullable: false})
     username: string
+
+    @Column({type: "varchar", nullable: false})
+    fullname: string
     
     @Column({type: "varchar", length: 8, nullable: false})
     rollno: string

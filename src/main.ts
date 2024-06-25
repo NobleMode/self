@@ -6,6 +6,7 @@ import { config } from 'dotenv';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import { ValidationPipe } from '@nestjs/common';
+import * as hbs from 'hbs';
 config();
 
 async function bootstrap() {
@@ -14,6 +15,9 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('handlebars');
+
+  hbs.registerPartials(join(__dirname, '..', 'views/partials'));
+
   app.use(cookieParser());
   app.use(bodyParser.json());
   app.useGlobalPipes(new ValidationPipe());

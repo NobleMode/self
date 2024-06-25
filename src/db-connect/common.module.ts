@@ -12,7 +12,7 @@ import { Member } from 'src/entities/member.entities';
     GlobalJwtModule,
     TypeOrmModule.forFeature([User, Member]), 
   ],
-  providers: [ CommonService],
+  providers: [CommonService],
   exports: [CommonService]
 })
 export class CommonModule {}

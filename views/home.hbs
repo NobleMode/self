@@ -1,493 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/ico" href="favicon1.ico" />
-    <link href="../src/output.css" rel="stylesheet" />
-    <title>PROJECT TEAM 6</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    />
 
-    <!-- DaisyUI-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/ico" href="favicon1.ico" />
+  <link href="/css/output.css" rel="stylesheet" />
+  <title>PROJECT TEAM 6</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Icons-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+  <!-- DaisyUI-->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- CSS -->
-    <link href="main.css" rel="stylesheet" type="text/css" />
-    <link href="home.css" rel="stylesheet" type="text/css" />
-  </head>
-  <script>
-    function showProfile() {
-      var profile = document.querySelector(".profile");
+  <!-- Icons-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-      if (profile.style.display != "block") {
-        profile.style.display = "block";
-        profile.classList.add("slide-left");
-      } else {
-        profile.style.display = "none";
-      }
-    }
+  <!-- CSS -->
+  <link href="/css/main.css" rel="stylesheet" type="text/css" />
+  <link href="/css/home.css" rel="stylesheet" type="text/css" />
+  <link href="/css/profile.css" rel="stylesheet" type="text/css" />
+</head>
 
-    function showNotification() {
-      var profile = document.querySelector(".notification");
+<body>
+  <!-- Header -->
+  {{> header}}
 
-      if (profile.style.display != "block") {
-        profile.style.display = "block";
-        profile.classList.add("slide-left");
-      } else {
-        profile.style.display = "none";
-      }
-    }
-  </script>
-
-  <style>
-    .slide-left {
-      -webkit-animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)
-        200ms both;
-      animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 200ms both;
-    }
-
-    @-webkit-keyframes slide-left {
-      0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-      }
-      100% {
-        -webkit-transform: translateX(-350px);
-        transform: translateX(-350px);
-      }
-    }
-    @keyframes slide-left {
-      0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-      }
-      100% {
-        -webkit-transform: translateX(-350px);
-        transform: translateX(-350px);
-      }
-    }
-
-    .header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 10px;
-    font-family: Roboto, sans-serif;
-}
-
-    :root {
-        background-color: #fff;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .menu {
-        background-color: #ad0214;
-        text-color: white;
-    }
-
-    .menu-bar {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #ffe6e9;
-        font-family: Roboto, sans-serif;
-        font-weight: bold;
-        width: 100%;
-    }
-
-    .tab-buttons {
-        display: grid;
-        
-        width: 100%;
-        /* justify-content: space-around; */
-    }
-
-    .menu-buttons {
-        padding-left: 10em;
-        border-radius: 0;
-    }
-
-    .menu-button{
-        color: #ad0214;
-        padding: 0.5em 0;
-        background-color: #ffe6e9;
-        text-align: center;
-        border-radius: 0;
-        border: 0;
-    }
-
-    .click:hover {
-        color: #fff;
-        background-color: #ad0214;
-    }
+  <!-- Main Here -->
+  <div class="p-8 w-[100vw]">
+    <div class="flex flex-col">
+      <div class="flex flex-row">
 
 
-    .menu-button:hover {
-        color: #fff;
-        background-color: #ad0214;
-    }
+        <!--Slide menu-->
+        <div>
+          <div class="flex flex-row w-full mb-4">
+            <div class="flex flex-col w-full">
+              <div class="py-1 px-6 rounded-xl font-bold space-x pe-4 bg-red-200 text-red-800">
+                <p class="text-center">La Birthday</p>
+              </div>
 
-    .mdi--filter-outline {
-        display: inline-block;
-        width: 2em;
-        height: 2em;
-        color: #fff;
-        margin-top: 5px;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ad0214' d='M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z'/%3E%3C/svg%3E");
-      }
+              <div class="flex flex-col pt-2 text-red-800">
+                <div class="flex flex-row">
+                  <div class="font-semibold bg-red-100 w-[15%] text-center mr-2 rounded-md">
+                    <div class="m-1">
+                      Hôm Nay
+                    </div>
+                  </div>
+                  <p class="flex items-center">
+                    {{#if now}}
+                    {{userData.now.fullname}} / {{userData.now.dept.name}} / {{userData.now.dob}} 
+                      {{#if userData.now.count}}
+                      + {{userData.now.count}} Other
+                      {{/if}}
+                    {{else}}
+                    Hôm nay ko có ai :(
+                    {{/if}}
+                  </p>
+                </div>
 
-    .mdi--filter-outline:hover{
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.989.989 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z'/%3E%3C/svg%3E");
-    }
+                <div class="mt-1"></div>
 
-    .ic--baseline-expand-more {
-        display: inline-block;
-        width: 1em;
-        height: 1em;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ad0214' d='M16.59 8.59L12 13.17L7.41 8.59L6 10l6 6l6-6z'/%3E%3C/svg%3E");
-      }
-
-    * {
-        box-sizing: border-box;
-    }
-    body {
-        font-family: Verdana, sans-serif;
-    }
-    .slider{
-        width: 1000px;
-        height: 600px;
-    }
-    img {
-        border-radius: 20px;
-    }
-    .container{
-        margin: 50px;
-        max-width: 1500px;
-    }
-
-    /* Slideshow container */
-    .slideshow-container {
-        max-width: 1000px;
-    }
-
-    /* The dots/bullets/indicators */
-    .dot {
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: #bbb;
-        border-radius: 50%;
-        display: inline-block;
-        transition: background-color 0.6s ease;
-    }
-
-    .active {
-        background-color: #717171;
-    }
-
-  
-  </style>
-  <body>
-    <div class="header">
-      <div class="ml-4">
-        <a href="https://www.facebook.com/fu.jsclub" alt="JS Club">
-          <img
-            src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
-            alt="JSClub"
-            style="width: 100px; height: 100px;"
-          />
-        </a>
-      </div>
-
-      <div class="sidePart flex">
-        <p class="text-[#ad0214] flex items-center">Welcome, {{user}}!</p>
-        <button
-          class="btn text-white rounded-full border-transparent bg-[#ad0214] hover:border-transparent hover:bg-[#99000f]"
-          style="margin-left: 1em"
-        >
-          LOG OUT
-        </button>
-      </div>
-    </div>
-    <div class="menu-bar">
-      <div class="tab-buttons grid-cols-12">
-        <a
-          href="/home"
-          class="btn menu-button col-span-3 text-white bg-[#ad0214]"
-        >
-        <button aria-label="Trang chủ">
-          TRANG CHỦ
-        </button>
-        </a>
-        <a
-          href="/infor"
-          class="btn menu-button col-span-3"
-        >
-          <button aria-label="Thông tin thành viên">
-            THÔNG TIN THÀNH VIÊN
-          </button>
-        </a>
-        <a href="/active" class="btn menu-button col-span-3">
-          <button aria-label="Đăng ký active">ĐĂNG KÍ HOẠT ĐỘNG</button>
-        </a>
-        <a href="/task" class="btn menu-button col-span-3">
-          <button aria-label="nhiệm vụ">NHIỆM VỤ</button>
-        </a>
-      </div>
-      <div class="menu-buttons flex">
-        <button
-          class="btn menu-button flex material-icons"
-          onclick="showNotification()"
-          aria-label="Menu"
-          style="padding: 0 1em"
-        >
-          notifications
-        </button>
-        <button
-          class="btn menu-button flex material-icons"
-          onclick="showProfile()"
-          aria-label="Menu"
-          style="padding: 0 1em"
-        >
-          menu
-        </button>
-      </div>
-    </div>
-    <!-- Profile Stuff-->
-    <div
-      class="profile rounded-bl-[48px] w-72 border-[#ddc8ca] border-l border-b bg-red-50"
-      style="
-        display: none;
-        position: absolute;
-        right: -350px;
-        top: 10.5em;
-        z-index: 10;
-      "
-    >
-      <div
-        class="h-24 w-full py-2"
-        style="position: absolute; background: #ad0214"
-      ></div>
-
-      <div class="avatar flex flex-col items-center py-8">
-        <div class="w-24 rounded-full shadow-lg mt-4">
-          <img
-            src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
-            alt="JS Club"
-          />
-        </div>
-
-        <span
-          class="pt-4"
-          style="font-size: larger; color: #ad0214; font-weight: bolder"
-        >
-          {{ user }}
-        </span>
-      </div>
-
-      <div class="flex justify-between">
-        <div class="ml-8 mb-4 font-medium" style="color: #ad0214">
-          <h1>Họ tên:</h1>
-          <h2>MSSV:</h2>
-          <h3>Ngày sinh:</h3>
-          <h4>Ban:</h4>
-          <h5>Vai trò:</h5>
-        </div>
-
-        <div class="text-end mr-8" style="color: #ad0214">
-          <h1>{{ name }}</h1>
-          <h2>{{ rollno }}</h2>
-          <h3>{{ dob }}</h3>
-          <h4>{{ dept }}</h4>
-          <h5>{{ role }}</h5>
-        </div>
-      </div>
-
-      <div class="mb-10 flex justify-center">
-        <div class="flex w-[80%] justify-between items-center">
-          <a
-            href="/profile"
-            class="underline font-semibold "
-            style="color: #ad0214"
-            >Xem chi tiết</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <!--Noti-->
-    <div
-      class="notification rounded-bl-[48px] w-80 border-[#ddc8ca] border-l border-b bg-red-50"
-      style="
-        display: none;
-        position: absolute;
-        right: -350px;
-        top: 10.5em;
-        z-index: 10;
-      "
-    >
-      <div class="text-center text-red-800 font-bold py-6">
-        Bạn có thông báo mới!
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Có 1 cuộc họp lúc 18/3/2024</p>
-        </a>
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Có 1 deadline đến sắp đến hạn</p>
-        </a>
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Bảo vệ thử dự án Chuyên môn</p>
-        </a>
-      </div>
-      <div
-        class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium"
-      >
-        <a href="">
-          <p class="text-center">Cập nhật deadline mới</p>
-        </a>
-      </div>
-      <div class="mb-10 flex justify-center mt-10">
-        <div class="flex w-[80%] justify-between items-center">
-          <a
-            href=""
-            class="underline font-semibold ms-40"
-            style="color: #ad0214"
-            >Xem tất cả</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Here -->
-    <div class="p-8 w-[100vw]">
-      <div class="flex flex-row justify-evenly mt-1">
-      <!--Slide menu-->
-      <div class="slideshow-container">
-          <div class="mySlides fade">
-            <a href="https://www.facebook.com/share/p/5GhPWqtCvPZB4pN1/?mibextid=oFDknk"><img src="https://i.ibb.co/k5zqvpQ/xplorei.jpg" alt="xplorei" border="0" class="w-[100vw]"></a>
-          </div>
-
-          <div class="mySlides fade">
-            <a href="https://www.facebook.com/share/p/czHdtGTwCJJEtnud/?mibextid=oFDknk"><img src="https://i.ibb.co/G5JYRbb/uniraw.jpg" alt="uniraw" border="0" class="w-[100vw]"></a>
-
-          </div>
-
-          <div class="mySlides fade">
-            <a href="https://www.facebook.com/share/p/9wG8KoFihuGju9rH/?mibextid=oFDknk"><img src="https://i.ibb.co/Yt53FrD/megabees.jpg" alt="megabees" border="0" class="w-[100vw]"></a>
-
-          </div>
-
-          <div class="mySlides fade">
-            <a href="https://www.facebook.com/share/p/tb5LQFTJwxjY8K8h/?mibextid=oFDknk"><img src="https://i.ibb.co/5vydzw4/geminus.png" alt="geminus" border="0" class="w-[100vw]"></a>
-
-          </div>
-
-          <div class="mySlides fade">
-            <a href="https://www.facebook.com/share/p/pLzVpXtG2nA1gsWa/?mibextid=oFDknk"><img src="https://i.ibb.co/mXjVVzs/colormatrix.jpg" alt="colormatrix" border="0" class="w-[100vw]"></a>
-          </div>
-          <br>
-          <div style="position: flex; text-align: center;">
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-          </div>
-      </div>
-      <!--Club's infor-->
-      
-        <div class="flex flex-col" style="margin-left: 50px;">
-          <div class="flex flex-row bg-red-200 text-red-800">
-            <div class="mt-1 py-1 px-6 rounded-xl space-x pe-4">
-              <p style="text-align: center;">CONTACT</p>
-            </div>
-          </div>
-          <div class="text-red-800 py-4">
-            <div class="flex flex-row py-1 space-x pe-4">
-              <p class="material-icons" style="margin-right: 10px;"> person </p>
-              <div class="flex flex-col">
-                <p>NGUYEN QUANG HUY </p>
-                <p>|PRESIDENT|</p>
+                <div class="flex flex-row">
+                  <div class="font-semibold bg-red-100 w-[15%] text-center mr-2 rounded-md">
+                    <div class="m-1">
+                      Upcoming
+                    </div>
+                  </div>
+                  <p class="flex items-center"> 
+                    {{#if now}}
+                    {{userData.close.fullname}} / {{userData.close.dept.name}} / {{userData.close.dob}} 
+                      {{#if userData.close.count}}
+                      + {{userData.close.count}} Other
+                      {{/if}}
+                    {{else}}
+                    2 tuần nữa ko có ai :(
+                    {{/if}}
+                </div>
               </div>
             </div>
-            
-            <div class="flex flex-row py-1 space-x pe-4">
-              <p class="material-icons" style="margin-right: 10px;"> mail </p>
-              <p>Huynq@js.gmail.com</p>
-            </div>
-            <div class="flex flex-row py-1 space-x pe-4" style="margin-top: 30px;">
-              <p class="material-icons" style="margin-right: 10px;"> person </p>
-              <div class="flex flex-col">
-                <p>PHAN TRUNG DUNG </p>
-                <p>|VICE - PRESIDENT|</p>
+
+            <div class="mx-2"></div>
+
+            <div class="flex flex-row w-full">
+              <div class="flex flex-col w-full">
+                <div class="py-1 px-6 rounded-xl font-bold space-x pe-4 bg-red-200 text-red-800">
+                  <p class="text-center">Thành Viên</p>
+                </div>
+                <div class="text-red-800 pt-2 flex flex-row">
+
+                  <div class="w-full flex flex-col bg-red-100 rounded-xl">
+                    <div class="m-2 px-2">
+                      <p class="font-semibold"> Tổng người dùng: </p>
+                      <p> {{userData.mem.total}} </p>
+                    </div>
+                  </div>
+
+                  <div class="mx-1"></div>
+
+                  <div class="w-full flex flex-col bg-red-100 rounded-xl">
+                    <div class="m-2 px-2">
+                      <div class="flex flex-row">
+                        <p class="font-semibold mr-2"> Chuyên Môn: </p>
+                        <p> {{userData.mem.cm}} </p>
+                      </div>
+
+                      <div class="my-1"></div>
+
+                      <div class="flex flex-row">
+                        <p class="font-semibold mr-2"> Truyền Thông: </p>
+                        <p> {{userData.mem.tt}} </p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="mx-1"></div>
+
+
+                  <div class="w-full flex flex-col bg-red-100 rounded-xl">
+                    <div class="m-2 px-2">
+                      <div class="flex flex-row">
+                        <p class="font-semibold mr-2"> Đối Ngoại: </p>
+                        <p> {{userData.mem.dn}} </p>
+                      </div>
+
+                      <div class="my-1"></div>
+
+                      <div class="flex flex-row">
+                        <p class="font-semibold mr-2"> Nội Dung: </p>
+                        <p> {{userData.mem.nd}} </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="flex flex-row py-1 space-x pe-4">
-              <p class="material-icons" style="margin-right: 10px;"> mail </p>
-              <p>Dungtp@js.gmail.com</p>
+          </div>
+
+          <div class="">
+            {{#each images}}
+            <div class="mySlides fade" data-index="{{@index}}">
+              <a href="{{href}}">
+                <img class="w-[100%]" src="{{src}}" alt="{{alt}}" />
+              </a>
+            </div>
+            {{/each}}
+
+            <br>
+
+            <div style="position: flex; text-align: center;">
+              {{#each images}}
+              <span class="dot" data-index="{{@index}}"></span>
+              {{/each}}
             </div>
           </div>
+          <!--Club's infor-->
+
+        </div>
+
+        <div class="mx-2"></div>
+
+        <div class="flex flex-col">
+          <div class="flex flex-col">
+            <div class="py-1 px-6 rounded-xl font-bold space-x pe-4 bg-red-200 text-red-800">
+              <p class="" style="text-align: center;">CONTACT</p>
+            </div>
+            <div class="text-red-800 py-4">
+              <div>
+                <div class="flex flex-row py-1 space-x pe-4">
+                  <p class="material-icons" style="margin-right: 10px;"> person </p>
+                  <div class="flex flex-col">
+                    <p>{{userData.topDog.fullname}}</p>
+                    <p>- {{userData.topDog.role.name}} -</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-row py-1 space-x pe-4">
+                  <p class="material-icons" style="margin-right: 10px;"> mail </p>
+                  <p>{{userData.topDog.mail}}</p>
+                </div>
+              </div>
+
+              <br>
+
+              <div class="">
+                <div class="flex flex-row py-1 space-x pe-4">
+                  <p class="material-icons" style="margin-right: 10px;"> person </p>
+                  <div class="flex flex-col">
+                    <p>{{userData.secDog.fullname}}</p>
+                    <p>- {{userData.secDog.role.name}} -</p>
+                  </div>
+                </div>
+                <div class="flex flex-row py-1 space-x pe-4">
+                  <p class="material-icons" style="margin-right: 10px;"> mail </p>
+                  <p>{{userData.secDog.mail}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-2 flex flex-col">
+            <div class="py-1 px-6 rounded-xl font-bold space-x pe-4 bg-red-200 text-red-800">
+              <p class="" style="text-align: center;">ABOUT US</p>
+            </div>
+            <div class="text-red-800 py-4 flex flex-row">
+              <p class="material-icons" style="margin-right: 10px;">map</p>
+              <p>Đại học FPT, Khu CNC Hòa Lạc, Hòa Lạc, Hà Nội</p>
+            </div>
+
+            <div class="text-red-800 py-4 flex flex-row">
+              <p class="material-icons" style="margin-right: 10px;">mail</p>
+              <p>js.club@gmail.com</p>
+            </div>
+          </div>
+
         </div>
       </div>
-  </div>
+    </div>
 </body>
 
-<script>
-  let slideIndex = 0;
-  showSlides();
+<script src="/js/slides.js"></script>
+<script src="/js/profile.js"></script>
 
-  function showSlides() {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
-      let dots = document.getElementsByClassName("dot");
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";  
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}    
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";  
-      dots[slideIndex-1].className += " active";
-      setTimeout(showSlides, 2000); // Change image every 2 seconds
-  }
-  
-</script>
 </html>

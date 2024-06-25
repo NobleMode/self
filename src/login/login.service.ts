@@ -6,18 +6,18 @@ import { Member } from 'src/entities/member.entities';
 import { User } from 'src/entities/user.entities';
 import { Repository } from 'typeorm';
 
-export let result;
+export let result : any;
 @Injectable()
 export class LoginService {
     constructor(
-        @Inject(PG_CONNECTION) private conn: any, 
-        private jwtService: JwtService, 
+        @Inject(PG_CONNECTION) private conn: any,
+        private jwtService: JwtService,
         @InjectRepository(User) private usersRepository: Repository<User>,
-        @InjectRepository(Member) private memberRepository: Repository<Member>) {}
+        @InjectRepository(Member) private memberRepository: Repository<Member>) { }
 
     async validateUser(username: string, password: string): Promise<any> {
 
-        var user
+        let user : any
 
         if (username.includes("@fpt.edu.vn")) {
             user = await this.usersRepository.findOne({ where: { mail: username, password: password } });
@@ -46,9 +46,7 @@ export class LoginService {
         const sub = member.rollno
         const perm = member.role.permissions
 
-        console.log(perm);
-
-        const payload = { username: username, sub: sub, perm: perm};
+        const payload = { username: username, sub: sub, perm: perm };
 
         return this.jwtService.sign(payload);
     }

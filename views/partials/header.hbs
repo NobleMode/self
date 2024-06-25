@@ -1,0 +1,131 @@
+<div class="header">
+  <div class="ml-4 w-[4%]">
+    <a href="https://www.facebook.com/fu.jsclub" alt="JS Club">
+      <img src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
+        alt="JSClub" />
+    </a>
+  </div>
+
+  <div class="sidePart flex">
+    <p class="text-[#ad0214] flex items-center">Welcome, {{user.username}}!</p>
+    <button
+      class="btn material-icons text-[#ad0214] rounded-full bg-transparent border-transparent hover:text-white hover:border-transparent hover:bg-[#ad0214]"
+      style="margin-left: 1em" onclick="window.location.href = '/login'">
+      logout
+    </button>
+  </div>
+</div>
+
+<!-- Actual Header -->
+<div class="menu-bar">
+  <div class="tab-buttons grid-cols-12">
+    <a href="/home" class="btn menu-button col-span-3 {{#if (eq page 'home')}}text-white bg-[#ad0214]{{/if}}">
+      <button aria-label="Trang chủ">
+        TRANG CHỦ
+      </button>
+    </a>
+    <a href="/infor" class="btn menu-button col-span-3 {{#if (eq page 'info')}}text-white bg-[#ad0214]{{/if}}">
+      <button aria-label="Thông tin thành viên">
+        THÔNG TIN THÀNH VIÊN
+      </button>
+    </a>
+    <a href="/active" class="btn menu-button col-span-3 {{#if (eq page 'active')}}text-white bg-[#ad0214]{{/if}}">
+      <button aria-label="Đăng ký active">ĐĂNG KÍ HOẠT ĐỘNG</button>
+    </a>
+    <a href="/task" class="btn menu-button col-span-3 {{#if (eq page 'task')}}text-white bg-[#ad0214]{{/if}}">
+      <button aria-label="nhiệm vụ">NHIỆM VỤ</button>
+    </a>
+  </div>
+  <div class="menu-buttons flex">
+    <button class="btn menu-button flex material-icons" onclick="showNotification()" aria-label="Menu"
+      style="padding: 0 1em">
+      notifications
+    </button>
+    <button class="btn menu-button flex material-icons" onclick="showProfile()" aria-label="Menu"
+      style="padding: 0 1em">
+      menu
+    </button>
+  </div>
+</div>
+
+<!-- Profile Stuff-->
+<div class="profile rounded-bl-[48px] w-72 border-[#ddc8ca] border-l border-b bg-red-50" style="
+        display: none;
+        position: absolute;
+        right: -350px;
+        z-index: 10;
+      ">
+  <div class="h-24 w-full py-2" style="position: absolute; background: #ad0214"></div>
+
+  <div class="avatar flex flex-col items-center py-8">
+    <div class="w-24 rounded-full shadow-lg mt-4">
+      <img src="https://cdn.ketnoibongda.vn/upload/images/12022330-845928092188375-8890160160420757664-o-2021-06-07.png"
+        alt="JS Club" />
+    </div>
+
+    <span class="pt-4" style="font-size: larger; color: #ad0214; font-weight: bolder">
+      {{user.username}}
+    </span>
+  </div>
+
+  <div class="flex justify-between">
+    <div class="ml-8 mb-4 font-medium" style="color: #ad0214">
+      <h1>Họ tên:</h1>
+      <h2>MSSV:</h2>
+      <h3>Ngày sinh:</h3>
+      <h4>Ban:</h4>
+      <h5>Role:</h5>
+    </div>
+
+    <div class="text-end mr-8" style="color: #ad0214">
+      <h1>{{user.fullname}}</h1>
+      <h2>{{toUpperCase user.rollno}}</h2>
+      <h3>{{user.dob}}</h3>
+      <h4>{{user.dept.name}}</h4>
+      <h5>{{user.role.name}}</h5>
+    </div>
+  </div>
+
+  <div class="mb-10 flex justify-center">
+    <div class="flex w-[80%] justify-between items-center">
+      <a href="/profile" class="underline font-semibold" style="color: #ad0214">Xem chi tiết</a>
+    </div>
+  </div>
+</div>
+
+<!--Noti-->
+<div class="notification rounded-bl-[48px] w-80 border-[#ddc8ca] border-l border-b bg-red-50" style="
+        display: none;
+        position: absolute;
+        right: -350px;
+        z-index: 10;
+      ">
+  <div class="text-center text-red-800 font-bold py-6">
+    Bạn có thông báo mới!
+  </div>
+  <div class="rounded-lg p-2 ms-6 me-6 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+    <a href="">
+      <p class="text-center">Có 1 cuộc họp lúc 18/3/2024</p>
+    </a>
+  </div>
+  <div class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+    <a href="">
+      <p class="text-center">Có 1 deadline đến sắp đến hạn</p>
+    </a>
+  </div>
+  <div class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+    <a href="">
+      <p class="text-center">Bảo vệ thử dự án Chuyên môn</p>
+    </a>
+  </div>
+  <div class="rounded-lg p-2 ms-6 me-6 mt-4 bg-red-100 hover:bg-red-200 text-red-800 font-medium">
+    <a href="">
+      <p class="text-center">Cập nhật deadline mới</p>
+    </a>
+  </div>
+  <div class="mb-10 flex justify-center mt-10">
+    <div class="flex w-[80%] justify-between items-center">
+      <a href="" class="underline font-semibold ms-40" style="color: #ad0214">Xem tất cả</a>
+    </div>
+  </div>
+</div>
