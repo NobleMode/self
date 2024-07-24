@@ -7,10 +7,14 @@ export class EventActive {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Member, (m) => m.rollno)
+    @ManyToOne(() => Member, (m) => m.rollno, {
+        onDelete: "CASCADE"
+    })
     member: Member;
 
-    @ManyToOne(() => Event, (e) => e.id)
+    @ManyToOne(() => Event, (e) => e.id, {
+        onDelete: "CASCADE"
+    })
     event: Event;
 
     @Column({type: "boolean", default: false})

@@ -1,84 +1,83 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { PG_CONNECTION } from 'src/db-connect/constants';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Member } from 'src/entities/member.entities';
+import { Repository } from 'typeorm';
+
+let Criteria: {
+  rollno: string;
+  fullname: string;
+  dept: string;
+  role: string;
+  gen: string;
+  search: string;
+} = { rollno: null, fullname: null, dept: null, role: null, gen: null, search: null };
 
 @Injectable()
 export class ListService {
-    constructor(@Inject(PG_CONNECTION) private conn: any) {}
+  constructor(@InjectRepository(Member) private memberRepository: Repository<Member>) { }
 
-    async getAll(): Promise<any> {
-        const result = await this.conn.query(`
-            SELECT m.*, d.name AS dept, r.name AS role
-            FROM public.member m
-            JOIN public.dept d ON m.dept_id = d.dept_id
-            JOIN public.role r ON m.role_id = r.role_id
-        `);
-    
-        const updatedRows = result.rows.map(row => ({
-            ...row,
-            rollno: row.rollno.toUpperCase(),
-        }));
-    
-        return updatedRows;
-    }
+  async getAll(): Promise<any> {
+    return await this.memberRepository.find({ relations: ['role', 'dept'] });
+  }
 
-    async sortMembersBy(criteria) {
-        let query = 'SELECT m.*, d.name AS dept, r.name AS role FROM public.member m JOIN public.dept d ON m.dept_id = d.dept_id JOIN public.role r ON m.role_id = r.role_id';
-        let params = [];
-    
-        if (criteria === 'A - Z' || criteria === 'Z - A') {
-            query += ' ORDER BY name ' + (criteria === 'A - Z' ? 'ASC' : 'DESC');
-        } else if (criteria === 'HE' || criteria === 'HA' || criteria === 'HS' || criteria === 'ALL') {
-            if (criteria !== 'ALL') {
-                params.push(criteria.toLowerCase() + '%');
-                query += ' WHERE rollno LIKE $' + params.length;
-            }
-        } else if (criteria === 'Chuyên môn' || criteria === 'Truyền thông' || criteria === 'Văn hóa' || criteria === 'Đối ngoại' || criteria === 'Nội dung' || criteria === 'ALL') {
-            if (criteria !== 'ALL') {
-                const shorthand = criteria.split(' ').map(word => word[0].toUpperCase()).join('');
-                params.push(shorthand);
-                query += (params.length > 1 ? ' AND' : ' WHERE') + ' m.dept_id = $' + params.length;
-            }
-        } else if (criteria === 'Chủ nhiệm' || criteria === 'Phó chủ nhiệm' || criteria === 'Trưởng ban' || criteria === 'Thành viên' || criteria === 'Cộng tác viên' || criteria === 'ALL') {
-            if (criteria !== 'ALL') {
-                const shorthand = criteria.split(' ').map(word => word[0].toUpperCase()).join('');
-                params.push(shorthand);
-                query += (params.length > 1 ? ' AND' : ' WHERE') + ' m.role_id = $' + params.length;
-            }
-        } else if (criteria === 'keyboard_double_arrow_up' || criteria === 'keyboard_double_arrow_down') {
-            query += ' ORDER BY gen ' + (criteria === 'keyboard_double_arrow_up' ? 'ASC' : 'DESC');
+  async memberSortAndSearchBy(input: string) {
+    try {
+      this.getCriterias(input);
+
+      let query = this.memberRepository
+        .createQueryBuilder('member')
+        .leftJoinAndSelect('member.dept', 'dept')
+        .leftJoinAndSelect('member.role', 'role');
+
+      for (const key in Criteria) {
+        if (Criteria[key] !== null) {
+          // Perform operations using Criteria[key]
+          if (key === 'fullname' || key === 'gen') {
+            query = query.orderBy(`member.${key}`, Criteria[key] === 'asc' ? 'ASC' : 'DESC');
+          } else if (key === 'search') {
+            query = query.andWhere(`LOWER(member.fullname) like '%${Criteria[key].toLowerCase()}%'`);
+          } else {
+            query = query.andWhere(`member.${key} like '%${Criteria[key]}%'`);
+          }
         }
-    
-        const result = await this.conn.query(query, params);
+      }
 
-        const updatedRows = result.rows.map(row => ({
-            ...row,
-            rollno: row.rollno.toUpperCase(),
-        }));
-        
-        return updatedRows;
+      const members = await query.getMany();
+
+      return members;
+    
+    } catch (error) {
+      console.error('An error occurred:', error);
+      throw error; // re-throw the error if you want it to propagate
+    }
+  }
+
+  getCriterias(input: string) {
+    const type = input.split('_')[0];
+
+    let value;
+
+    if ( type == 'search' ) {
+      value = input.split('_')[1].replace(/"/g, '');
+    } else {
+      value = input.split('_')[1];
     }
 
-    async searchMembers(criteria) {
-        let query = 'SELECT m.*, d.name AS dept, r.name AS role FROM public.member m JOIN public.dept d ON m.dept_id = d.dept_id JOIN public.role r ON m.role_id = r.role_id WHERE m.rollno ILIKE $1 OR m.name ILIKE $1 OR m.username ILIKE $1';
-        let params = ['%' + criteria + '%'];
-    
-        const result = await this.conn.query(query, params);
-    
-        const updatedRows = result.rows.map(row => ({
-            ...row,
-            rollno: row.rollno.toUpperCase(),
-        }));
-        
-        console.log(updatedRows);
-        console.log(criteria);
-        return updatedRows;
+    switch (type) {
+      case 'rollno': value != 'all' ? Criteria.rollno = value : null; break;
+      case 'fullname': value != 'no' ? Criteria.fullname = value : null; break;
+      case 'dept': value != 'all' ? Criteria.dept = value : null; break;
+      case 'role': value != 'all' ? Criteria.role = value : null; break;
+      case 'gen': value != 'no' ? Criteria.gen = value : null; break;
+      case 'search': value != null ? Criteria.search = value : null; break;
     }
+  }
 
-    async deleteMember(rollno: string) {
-        await this.conn.query('BEGIN');
-        await this.conn.query('DELETE FROM public.event_active WHERE mem_id = $1', [rollno]);
-        await this.conn.query('DELETE FROM public.sem_active WHERE mem_id = $1', [rollno]);
-        await this.conn.query('DELETE FROM public.member WHERE rollno = $1', [rollno]);
-        await this.conn.query('COMMIT');
-    }
+  async deleteMember(rollno: string) {
+    return await this.memberRepository
+    .createQueryBuilder()
+    .delete()
+    .where('rollno = :rollno', { rollno })
+    .execute();
+  }
 }

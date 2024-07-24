@@ -14,33 +14,31 @@ export class ListController {
         const username = jwt.decode(request.cookies.jwt)['username'];
 
         return { 
-            user: await this.cS.getInfo(username, "username"),
-            name: await this.cS.getInfo(username, "name"),
-            rollno: (await this.cS.getInfo(username, "rollno")).toLocaleUpperCase(),
-            dob: new Date(await this.cS.getInfo(username, "dob")).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' }),
-            dept: await this.cS.getRef(username, "dept", true),
-            role: await this.cS.getRef(username, "role", true),
+            user: await this.cS.getInfo(username),
 
             memList: await this.lS.getAll(),
         };
     }
 
-    @Get('sort')
-    async sortMembersBy(@Query('criteria') criteria) {
-        const members = await this.lS.sortMembersBy(criteria);
-        return { members };
-    }
-
-    @Get('search')
-    async searchMembers(@Query('criteria') criteria) {
-        const members = await this.lS.searchMembers(criteria);
+    @Get('list')
+    async sortAndSearchBy(@Query('criteria') criteria) {
+        const members = await this.lS.memberSortAndSearchBy(criteria);
+        
         return { members };
     }
 
     @Post('delete')
-    async deleteMembers(@Body('rollnos') rollnos: string[]) {
+    async deleteMembers(@Body('rollnos') rollnos: string[], @Req() request: Request) {
+        const username = jwt.decode(request.cookies.jwt)['username'];
+        const user = await this.cS.getInfo(username);
+        let count : number = rollnos.length;
+
         for (const rollno of rollnos) {
+            if (user.rollno === rollno) {
+                return;
+            }
             await this.lS.deleteMember(rollno.toLocaleLowerCase());
+            count--;
         }
         const members = await this.lS.getAll();
         return { members };

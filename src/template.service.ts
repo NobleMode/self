@@ -17,5 +17,8 @@ export class TemplateService implements OnModuleInit {
         return v1 === v2;
       },
     );
+    Handlebars.registerHelper('date', function(date) {
+      return new Date(date).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    });
   }
 }

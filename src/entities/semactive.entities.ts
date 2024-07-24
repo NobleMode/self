@@ -7,10 +7,14 @@ export class SemsActive {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Member, (m) => m.rollno)
+    @ManyToOne(() => Member, (m) => m.rollno, {
+        onDelete: "CASCADE"
+    })
     member: Member;
 
-    @ManyToOne(() => Semester, (s) => s.id)
+    @ManyToOne(() => Semester, (s) => s.id, {
+        onDelete: "CASCADE"
+    })
     semester: Semester;
 
     @Column({type: "boolean", default: false})

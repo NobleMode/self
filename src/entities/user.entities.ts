@@ -6,7 +6,9 @@ export class User {
     @PrimaryColumn()
     id: number
     
-    @OneToOne(() => Member, member => member.user)
+    @OneToOne(() => Member, member => member.user, {
+        onDelete: 'CASCADE',
+    })
     @JoinColumn({name: 'id'})
     member: Member;
     

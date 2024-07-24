@@ -1,41 +1,11 @@
 /* Profile.css */
 
-.slide-left {
-    -webkit-animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 200ms both;
-    animation: slide-left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 200ms both;
-}
-
-@-webkit-keyframes slide-left {
-    0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-    }
-
-    100% {
-        -webkit-transform: translateX(-350px);
-        transform: translateX(-350px);
-    }
-}
-
-@keyframes slide-left {
-    0% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-    }
-
-    100% {
-        -webkit-transform: translateX(-350px);
-        transform: translateX(-350px);
-    }
-}
-
 * {
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Quicksand', sans-serif;
-    overflow-x: hidden;
 }
 
 .slider {
@@ -49,13 +19,14 @@ img {
 
 .container {
     margin: 50px;
-    max-width: 1500px;
 }
 
+/* Slideshow container */
 .slideshow-container {
     max-width: 1000px;
 }
 
+/* The dots/bullets/indicators */
 .dot {
     height: 15px;
     width: 15px;
@@ -108,6 +79,7 @@ body {
     display: grid;
 
     width: 100%;
+    /* justify-content: space-around; */
 }
 
 .menu-buttons {
@@ -182,10 +154,12 @@ img {
     margin: 50px;
 }
 
+/* Slideshow container */
 .slideshow-container {
     max-width: 1000px;
 }
 
+/* The dots/bullets/indicators */
 .dot {
     height: 15px;
     width: 15px;

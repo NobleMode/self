@@ -30,6 +30,8 @@ export class HomeController {
             }
         }
 
+        console.log(userData)
+
         return { 
             user: await this.cS.getInfo(username),
             images,
